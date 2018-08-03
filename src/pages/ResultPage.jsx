@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { ResultTable } from '../components';
+import { PlayerTable } from '../components';
 import { Row, Col } from 'react-bootstrap';
 
 class ResultPage extends Component {
+  
   parseResults() {
     return {
       tier1: {
@@ -49,12 +50,12 @@ class ResultPage extends Component {
   }
 
   render() {
-    const results = this.parseResults();
+    const playerData = this.parseResults();
 
     return (
       <Row className="result-page">
-        <Col>
-          <ResultTable tierBreakdown={results} />
+        <Col xs={10} xsOffset={1}>
+          <PlayerTable playerData={playerData} playerOnClick={(id) => console.log(id)} />
         </Col>
       </Row>
     );

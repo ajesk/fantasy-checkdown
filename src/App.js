@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './checklist.svg';
 import './App.css';
-import { ResultPage, ImportPage } from './pages'
+import PlayerContainer from './containers/PlayerContainer';
 
 class App extends Component {
   render() {
@@ -10,8 +10,8 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Fantasy Checkdown</h1>
-          <ResultPage />
         </header>
+        <PlayerContainer />
       </div>
     );
   }

@@ -1,3 +1,5 @@
-import ResultTable from './ResultTable';
+import PlayerTable from './PlayerTable';
+import PlayerTier from './PlayerTier';
+import Player from './Player';
 
-export { ResultTable };
+export { PlayerTable, Player, PlayerTier };
