@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { VisibilityFilters, pickPlayer } from '../actions';
 import { PlayerTable } from '../components';
 
-const getAvailablePlayers = (players, selected, filter) => {
+const getAvailablePlayers = (players = {}, selected = {}, filter) => {
   switch (filter) {
     case VisibilityFilters.SHOW_AVAILABLE:
       return players
@@ -13,9 +13,10 @@ const getAvailablePlayers = (players, selected, filter) => {
   }
 };
 
-const mapStateToProps = state => ({
-  players: getAvailablePlayers(state.players, state.visibilityFilter)
-});
+const mapStateToProps = state => {
+  return ({
+  playerData: getAvailablePlayers(state.players, state.selected, state.visibilityFilter),
+})};
 
 const mapDispatchToProps = dispatch => ({
   pickPlayer: id => dispatch(pickPlayer(id))

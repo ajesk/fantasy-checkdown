@@ -7,7 +7,16 @@ const PlayerTier = ({playerTier, players, playerOnClick}) => (
       <tr className="tier-header">
         <th colSpan={10}>{playerTier}</th>
       </tr>
-      {Object.entries(players).map(([rank, player]) => <Player key={rank} rank={rank} player={player} onClick={() => playerOnClick(rank)} />)}
+      {
+        Object.entries(players)
+          .map(([rank, player]) => 
+            <Player
+              key={rank}
+              rank={rank}
+              player={player}
+              onClick={() => playerOnClick(rank)}
+            />)
+      }
     </tbody>
 );
 

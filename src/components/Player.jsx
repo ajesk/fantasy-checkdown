@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
 
-const Player = ({player, rank, onClick}) => (
+
+const Player = ({player, rank, onClick, dispatch}) => (
   <tr key={player.rank}>
-    <td onClick={onClick}>click to pick</td>
+    <td onClick={() => dispatch(onClick(rank))}>click to pick</td>
     <td>{rank}</td>
     <td>{player.name}</td>
     <td>{player.pos}</td>
@@ -18,4 +20,4 @@ Player.propTypes = {
   player: PropTypes.object.isRequired,
 }
 
-export default Player;
+export default connect()(Player);
