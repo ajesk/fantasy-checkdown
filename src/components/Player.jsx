@@ -1,11 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Glyphicon } from 'react-bootstrap';
+import './Player.css'
 
 
 const Player = ({player, rank, onClick, dispatch}) => (
   <tr key={player.rank}>
-    <td onClick={() => dispatch(onClick(rank))}>click to pick</td>
+    <td onClick={() => dispatch(onClick(rank))}>
+      <Glyphicon glyph="ok" />
+    </td>
     <td>{rank}</td>
     <td>{player.name}</td>
     <td>{player.pos}</td>

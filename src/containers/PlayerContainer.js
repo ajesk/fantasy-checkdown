@@ -19,7 +19,9 @@ const mapStateToProps = state => {
 })};
 
 const mapDispatchToProps = dispatch => ({
-  pickPlayer: id => dispatch(pickPlayer(id))
+  pickPlayer: id => {
+    return pickPlayer(id);
+  }
 });
 
 export default connect(
