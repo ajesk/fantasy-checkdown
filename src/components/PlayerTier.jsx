@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import { Player } from './'
+import './PlayerTier.css'
 
 const PlayerTier = ({playerTier, players, playerOnClick}) => (
     <tbody>

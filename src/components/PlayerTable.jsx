@@ -8,12 +8,12 @@ const PlayerTable = ({playerData, pickPlayer}) => (
       <Table bordered>
         <thead>
           <tr>
-            <td></td>
-            <td>rank</td>
-            <td>name</td>
-            <td>position</td>
-            <td>position rank</td>
-            <td>adp</td>
+            <th></th>
+            <th>rank</th>
+            <th>name</th>
+            <th>position</th>
+            <th>position rank</th>
+            <th>adp</th>
           </tr>
         </thead>
         {

@@ -3,7 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import logo from './checklist.svg';
 import './App.css';
 import PlayerContainer from './containers/PlayerContainer';
-import Import from './components/Import';
+import {Import, Undo} from './components';
 
 class App extends Component {
   render() {
@@ -16,6 +16,7 @@ class App extends Component {
         <Row>
           <Col xs={10} xsOffset={1}>
             <Import />
+            <Undo />
           </Col>
         </Row>
         <Row>

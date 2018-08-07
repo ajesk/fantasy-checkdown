@@ -1,26 +1,27 @@
 import _ from 'lodash';
 
-const deleteProperty = ({[key]: _, ...newObj}, key) => newObj;
-
 const players = (state = {}, action) => {
 	console.log(action.type)
 
 	switch (action.type) {
 		case 'PICK_PLAYER': {
 			const { id } = action;
-			
-			const updatedPlayers = Object.entries(state)
-				.map(([tier, players]) => {
+			let updatedPlayers = {};
+
+			Object.entries(state)
+				.forEach(([tier, players]) => {
 					const pickedPlayer = players[id];
 					if (pickedPlayer) {
 						pickedPlayer.tier = tier;
-						state.picked = state.picked.concat(pickedPlayer);
-						players = _.omit(players, id)
+						updatedPlayers.picked = state.picked.concat(pickedPlayer);
+						players = _.omit(players, id);
 					}
-					return [tier, players]
+					updatedPlayers[tier] = players;
 				});
 
-			console.log(state)
+			return updatedPlayers;
+		}
+		case 'UNDO_PICK': {
 			return state;
 		}
 		case 'IMPORT_PLAYERS': {

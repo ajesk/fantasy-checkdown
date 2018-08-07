@@ -13,6 +13,10 @@ export const pickPlayer = id => ({
   id
 });
 
+export const undoPick = () => ({
+  type: 'UNDO_PICK'
+});
+
 export const VisibilityFilters = {
   SHOW_AVAILABLE: 'SHOW_AVAILABLE',
   SHOW_PICKED: 'SHOW_PICKED'

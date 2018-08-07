@@ -1,3 +1,23 @@
 .glyphicon {
 	color: green;
 }
+
+.rb {
+	background-color: #9f9fde;
+}
+
+.wr {
+	background-color: #82b573;
+}
+
+.qb {
+	background-color: #e6696afc;
+}
+
+.te {
+	background-color: #e08ade;
+}
+
+.def, k {
+	background-color: gray;
+}
