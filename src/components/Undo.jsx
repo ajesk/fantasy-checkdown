@@ -5,7 +5,8 @@ import { Button } from 'react-bootstrap'
 import { undoPick } from '../actions'
 
 const Undo = ({dispatch, playersPicked}) => {
-	return playersPicked ? (
+	console.log(playersPicked)
+	return true ? (
 	<Button onClick={() => dispatch(undoPick())}>
 		Undo
 	</Button>
@@ -23,9 +24,4 @@ Undo.defaultProps = {
 	playersPicked: false
 }
 
-const mapStateToProps = state => {
-	console.log(state)
-	return ({playersPicked: state.picked})
-}
-
-export default connect(mapStateToProps)(Undo);
+export default connect()(Undo);
