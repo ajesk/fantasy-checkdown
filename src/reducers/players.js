@@ -14,7 +14,8 @@ const players = (state = {}, action) => {
 
 					if (pickedPlayer) {
 						pickedPlayer.tier = tier;
-						updatedPlayers.picked = state.picked.concat(pickedPlayer);
+						pickedPlayer.id = id;
+						updatedPlayers.picked = state.picked ? state.picked.concat(pickedPlayer) : [pickedPlayer];
 						players = _.omit(players, id);
 					}
 					updatedPlayers[tier] = players;
@@ -23,26 +24,23 @@ const players = (state = {}, action) => {
 			return updatedPlayers;
 		}
 		case 'UNDO_PICK': {
+			if (!state.picked || !state.picked.length) return state;
+
 			let updatedState = {};
-			const lastPicked = state.picked.slice(-1);
-			updatedState.picked = state.picked.filter((player) => lastPicked.posRank !== player.posRank);
-			
-			console.log(updatedState.picked)
-			Object.entries(state)
+			const lastPicked = state.picked.slice(-1)[0];
+
+			updatedState.picked = state.picked.filter((player) => player.id !== lastPicked.id);
+						Object.entries(state)
 				.forEach(([tier, players]) => {
 					if (tier !== 'picked') {
-						console.log(tier)
 						updatedState[tier] = players
 
 						if (tier === lastPicked.tier) {
-							updatedState[tier][lastPicked.posRank] = lastPicked;
+							updatedState[tier][lastPicked.id] = lastPicked;
 						}
 					}
 			});
-
-			console.log (updatedState)
-
-			return state;
+			return updatedState;
 		}
 		case 'IMPORT_PLAYERS': {
 			return action.data;

@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
-import { Button } from 'react-bootstrap'
+import { Button, Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import { importPlayers } from '../actions'
+import { parseRankings } from '../util';
 
 const data = {
   picked: [],
@@ -50,12 +51,37 @@ const data = {
   tier3: {}
 }
 
-const Import = ({dispatch}) => {
-  return (
-  <Button onClick={() => dispatch(importPlayers(data))}>
-    Import
-  </Button>
-)}
+class Import extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      rawData: ''
+    };
+  }
+
+  handleTAChange(e) {
+    this.setState({rawData: e.target.value});
+  }
+
+  handleSubmit() {
+    const {dispatch} = this.props;
+
+    parseRankings(this.state.rawData);
+    dispatch(importPlayers(parseRankings(this.state.rawData)))
+  }
+
+  render() {
+    return (
+      <Form>
+        <FormGroup controlId="formControlsTextarea">
+          <ControlLabel>Paste Tier Rankings</ControlLabel>
+          <FormControl onChange={this.handleTAChange.bind(this)} componentClass="textarea" placeholder="tier rankings..." />
+        </FormGroup>
+        <Button onClick={this.handleSubmit.bind(this)} type="button">Import</Button>
+      </Form>
+  )}
+}
 
 Import.propTypes = {
   

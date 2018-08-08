@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
 import { PlayerTier } from '.';
+import './PlayerTable.css'
 
 const PlayerTable = ({playerData, pickPlayer}) => (
     !(Object.keys(playerData).length === 0 && playerData.constructor === Object) ?
@@ -9,11 +10,11 @@ const PlayerTable = ({playerData, pickPlayer}) => (
         <thead>
           <tr>
             <th></th>
-            <th>rank</th>
-            <th>name</th>
-            <th>position</th>
-            <th>position rank</th>
-            <th>adp</th>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>P. Rank</th>
+            <th>ADP</th>
           </tr>
         </thead>
         {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Navbar, NavbarBrand, NavItem } from 'react-bootstrap';
 import logo from './checklist.svg';
 import './App.css';
 import PlayerContainer from './containers/PlayerContainer';
@@ -9,17 +9,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Fantasy Checkdown</h1>
-        </header>
-        <Row>
+        <Navbar inverse className="App-header">
+          <NavbarBrand className="nav-brand">
+            <img src={logo} className="app-logo" alt="logo" />
+          </NavbarBrand>
+          <p className="nav-text">Fantasy Checkdown</p>
+        </Navbar>
+        <Row className="function-row">
           <Col xs={10} xsOffset={1}>
             <Import />
             <Undo />
           </Col>
         </Row>
-        <Row>
+        <Row className="table-row">
           <Col xs={10} xsOffset={1}>
             <PlayerContainer />
           </Col>

@@ -7,14 +7,14 @@ import './Player.css'
 
 const Player = ({player, rank, onClick, dispatch}) => (
   <tr key={player.rank} className={player.pos}>
-    <td onClick={() => dispatch(onClick(rank))}>
+    <td className="center" onClick={() => dispatch(onClick(rank))}>
       <Glyphicon glyph="ok" />
     </td>
-    <td>{rank}</td>
+    <td className="center">{rank}</td>
     <td>{player.name}</td>
-    <td>{player.pos}</td>
-    <td>{player.posRank}</td>
-    <td>{player.adp}</td>
+    <td className="center">{player.pos.toUpperCase()}</td>
+    <td className="center">{player.posRank}</td>
+    <td className="center">{player.adp}</td>
   </tr>
 )
 

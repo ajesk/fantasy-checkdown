@@ -2,6 +2,10 @@
 	color: green;
 }
 
+.center {
+	text-align: center;
+}
+
 .rb {
 	background-color: #9f9fde;
 }
@@ -18,6 +22,6 @@
 	background-color: #e08ade;
 }
 
-.def, k {
+.dst, .k {
 	background-color: gray;
 }
