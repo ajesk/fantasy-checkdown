@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row, Navbar, NavbarBrand, NavItem } from 'react-bootstrap';
+import { Col, Row, Navbar, NavbarBrand } from 'react-bootstrap';
 import logo from './checklist.svg';
 import './App.css';
 import PlayerContainer from './containers/PlayerContainer';
@@ -15,17 +15,18 @@ class App extends Component {
           </NavbarBrand>
           <p className="nav-text">Fantasy Checkdown</p>
         </Navbar>
-        <Row className="function-row">
-          <Col xs={10} xsOffset={1}>
-            <Import />
-            <Undo />
-          </Col>
-        </Row>
         <Row className="table-row">
           <Col xs={10} xsOffset={1}>
+            <Undo />
             <PlayerContainer />
           </Col>
         </Row>
+        <Row className="function-row">
+          <Col xs={10} xsOffset={1}>
+            <Import />
+          </Col>
+        </Row>
+        
       </div>
     );
   }

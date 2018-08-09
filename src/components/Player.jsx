@@ -6,6 +6,7 @@ import './Player.css'
 
 
 const Player = ({player, rank, onClick, dispatch}) => (
+  
   <tr key={player.rank} className={player.pos}>
     <td className="center" onClick={() => dispatch(onClick(rank))}>
       <Glyphicon glyph="ok" />

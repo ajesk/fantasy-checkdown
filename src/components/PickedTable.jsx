@@ -4,17 +4,13 @@ import { Table } from 'react-bootstrap';
 import { PlayerTier } from '.';
 import './PlayerTable.css';
 
-const PlayerTable = ({playerData, pickPlayer}) => (
+const PickedTable = ({playerData, pickPlayer}) => (
     !(Object.keys(playerData).length === 0 && playerData.constructor === Object) ?
       <Table bordered>
         <thead>
           <tr>
-            <th></th>
-            <th>Rank</th>
+            <th>Pick #</th>
             <th>Name</th>
-            <th>Position</th>
-            <th>P. Rank</th>
-            <th>ADP</th>
           </tr>
         </thead>
         {
@@ -31,13 +27,11 @@ const PlayerTable = ({playerData, pickPlayer}) => (
 );
 
 PlayerTable.propTypes = {
-  pickPlayer: PropTypes.func.isRequired,
-  playerData: PropTypes.object.isRequired,
+  playerData: PropTypes.array.isRequired,
 }
 
-PlayerTable.defaultProps = {
-  pickPlayer: () => '',
+PickedTable.defaultProps = {
   playerData: {}
 }
 
-export default PlayerTable;
+export default PickedTable;

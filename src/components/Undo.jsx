@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
-import { Button } from 'react-bootstrap'
+import { Button, Glyphicon } from 'react-bootstrap'
 import { undoPick } from '../actions'
 
 const Undo = ({dispatch, playersPicked}) => {
-	console.log(playersPicked)
 	return true ? (
-	<Button onClick={() => dispatch(undoPick())}>
+	<Button bsStyle="warning" onClick={() => dispatch(undoPick())}>
+		<Glyphicon glyph="step-backward" />
 		Undo
 	</Button>
 	) :
-	null
+	null;
 }
 
 Undo.propTypes = {
