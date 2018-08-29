@@ -1,8 +1,6 @@
 import _ from 'lodash';
 
 const players = (state = {}, action) => {
-	console.log(action.type)
-
 	switch (action.type) {
 		case 'PICK_PLAYER': {
 			const { id } = action;
