@@ -2,11 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { importPlayers } from '../actions';
-import { parseRankings } from '../util';
+import { parseFpCsv } from '../util';
 
 class Import extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTAChange = this.handleTAChange.bind(this);
 
     this.state = {
       rawData: ''
@@ -14,13 +17,13 @@ class Import extends React.Component {
   }
 
   handleTAChange(e) {
-    this.setState({rawData: e.target.value});
+    this.setState({ rawData: e.target.value });
   }
 
   handleSubmit() {
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
 
-    dispatch(importPlayers(parseRankings(this.state.rawData)));
+    dispatch(importPlayers(parseFpCsv(this.state.rawData)));
   }
 
   render() {
@@ -28,9 +31,9 @@ class Import extends React.Component {
       <Form>
         <FormGroup controlId="formControlsTextarea">
           <ControlLabel>Paste Tier Rankings</ControlLabel>
-          <FormControl onChange={this.handleTAChange.bind(this)} componentClass="textarea" placeholder="tier rankings..." />
+          <FormControl onChange={this.handleTAChange} componentClass="textarea" placeholder="tier rankings..." />
         </FormGroup>
-        <Button onClick={this.handleSubmit.bind(this)} type="button">Import</Button>
+        <Button onClick={this.handleSubmit} type="button">Import</Button>
       </Form>
     );
   }

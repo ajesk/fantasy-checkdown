@@ -4,24 +4,23 @@ import { connect } from 'react-redux';
 import { Glyphicon } from 'react-bootstrap';
 import './Player.css'
 
+function getPosClass(pos) {
+  return pos.replace(/[0-9]/g, '').toLowerCase();
+}
 
-const Player = ({player, rank, onClick, dispatch}) => (
-  
-  <tr key={player.rank} className={player.pos}>
-    <td className="center" onClick={() => dispatch(onClick(rank))}>
+const Player = ({ player, onClick, dispatch }) =>
+  <tr key={player.rank} className={getPosClass(player.pos)}>
+    <td className="center" onClick={() => dispatch(onClick(player.rank))}>
       <Glyphicon glyph="ok" />
     </td>
-    <td className="center">{rank}</td>
-    <td>{player.name}</td>
-    <td className="center">{player.pos.toUpperCase()}</td>
-    <td className="center">{player.posRank}</td>
+    <td className="center">{player.rank}</td>
+    <td>{player.overall}</td>
+    <td className="center">{player.pos}</td>
     <td className="center">{player.adp}</td>
-  </tr>
-)
+  </tr>;
 
 Player.propTypes = {
   onClick: PropTypes.func.isRequired,
-  rank: PropTypes.any.isRequired,
   player: PropTypes.object.isRequired,
 }
 

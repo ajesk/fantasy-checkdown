@@ -8,9 +8,9 @@ export const importPlayers = data => ({
 	data
 })
 
-export const pickPlayer = id => ({
+export const pickPlayer = rank => ({
   type: 'PICK_PLAYER',
-  id
+  rank
 });
 
 export const undoPick = () => ({

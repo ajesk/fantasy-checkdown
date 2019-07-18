@@ -1,44 +1,34 @@
 import _ from 'lodash';
 
-const players = (state = {}, action) => {
+function getLastPicked(state) {
+  return Math.max(...state.filter(p => p.picked !== 0 && typeof p.picked !== 'undefined').map(p => p.picked), 0);
+}
+
+function pickPlayer(action, state) {
+  const { rank } = action;
+
+  return state.map(player => {
+    if (player.rank === rank) player.picked = getLastPicked(state) + 1;
+    return player
+  });
+}
+
+function undoLastPick(state) {
+  const lastPicked = getLastPicked(state);
+
+  return state.map(player => {
+    if (player.picked === lastPicked) delete player.picked
+    return player;
+  })
+}
+
+const players = (state = [], action) => {
 	switch (action.type) {
 		case 'PICK_PLAYER': {
-			const { id } = action;
-			let updatedPlayers = {};
-
-			Object.entries(state)
-				.forEach(([tier, players]) => {
-					const pickedPlayer = players[id];
-
-					if (pickedPlayer) {
-						pickedPlayer.tier = tier;
-						pickedPlayer.id = id;
-						updatedPlayers.picked = state.picked ? state.picked.concat(pickedPlayer) : [pickedPlayer];
-						players = _.omit(players, id);
-					}
-					updatedPlayers[tier] = players;
-				});
-
-			return updatedPlayers;
+      return pickPlayer(action, state);
 		}
 		case 'UNDO_PICK': {
-			if (!state.picked || !state.picked.length) return state;
-
-			let updatedState = {};
-			const lastPicked = state.picked.slice(-1)[0];
-
-			updatedState.picked = state.picked.filter((player) => player.id !== lastPicked.id);
-						Object.entries(state)
-				.forEach(([tier, players]) => {
-					if (tier !== 'picked') {
-						updatedState[tier] = players
-
-						if (tier === lastPicked.tier) {
-							updatedState[tier][lastPicked.id] = lastPicked;
-						}
-					}
-			});
-			return updatedState;
+			return undoLastPick(state);
 		}
 		case 'IMPORT_PLAYERS': {
 			return action.data;
