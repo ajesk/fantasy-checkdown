@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
-import { PlayerTier } from '.';
 import './PlayerTable.css';
 
-const PickedTable = ({playerData, pickPlayer}) => (
-    !(Object.keys(playerData).length === 0 && playerData.constructor === Object) ?
+const PickedTable = ({playerData}) => {
+  console.log(playerData);
+  return (
       <Table bordered>
         <thead>
           <tr>
@@ -14,24 +14,22 @@ const PickedTable = ({playerData, pickPlayer}) => (
           </tr>
         </thead>
         {
-          Object.entries(playerData)
-            .filter(([tier, players]) => tier !== 'picked')
-            .map(([tier, players]) => 
-              !(Object.keys(players).length === 0 && players.constructor === Object) ?
-                <PlayerTier key={tier} players={players} playerTier={tier} playerOnClick={pickPlayer} /> :
-                null
-            )
+          playerData.map((player) => 
+            <tr>
+              <td>{player.picked}</td>
+              <td>{player.overall}</td>
+            </tr>
+          )
         }
-      </Table> :
-      ''
-);
+      </Table>
+)};
 
-PlayerTable.propTypes = {
+PickedTable.propTypes = {
   playerData: PropTypes.array.isRequired,
 }
 
 PickedTable.defaultProps = {
-  playerData: {}
+  playerData: []
 }
 
 export default PickedTable;

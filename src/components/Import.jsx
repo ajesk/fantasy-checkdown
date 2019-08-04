@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { importPlayers } from '../actions';
 import { parseFpCsv } from '../util';
+import './Import.scss'
 
 class Import extends React.Component {
   constructor(props) {
@@ -28,13 +29,13 @@ class Import extends React.Component {
 
   render() {
     return (
-      <Form>
+      <div className="import-control">
         <FormGroup controlId="formControlsTextarea">
           <ControlLabel>Paste Tier Rankings</ControlLabel>
           <FormControl onChange={this.handleTAChange} componentClass="textarea" placeholder="tier rankings..." />
         </FormGroup>
-        <Button onClick={this.handleSubmit} type="button">Import</Button>
-      </Form>
+        <div className="import-button" onClick={this.handleSubmit}>Import</div>
+      </div>
     );
   }
 }

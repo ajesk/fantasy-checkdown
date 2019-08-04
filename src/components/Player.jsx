@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Glyphicon } from 'react-bootstrap';
-import './Player.css'
+import './Player.scss'
 
 function getPosClass(pos) {
   return pos.replace(/[0-9]/g, '').toLowerCase();

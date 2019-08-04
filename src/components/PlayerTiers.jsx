@@ -6,7 +6,7 @@ import './PlayerTiers.css';
 const PlayerTiers = ({ players, playerOnClick }) => {
   return players.map((p) => p.tier)
     .filter((v, i, a) => a.indexOf(v) === i)
-    .sort()
+    .sort((a, b) => a.tier > b.tier)
     .map((tier) =>
       <PlayerTier
         key={tier}

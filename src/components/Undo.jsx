@@ -10,7 +10,7 @@ const Undo = ({ dispatch }) => {
     <div className="undo-button" onClick={() => dispatch(undoPick())}>
       <Glyphicon glyph="step-backward" />
       Undo
-	</div>
+  	</div>
   );
 }
 

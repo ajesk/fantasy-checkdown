@@ -15,7 +15,7 @@
 }
 
 .rb {
-	background-color: #68b609;
+	background-color: #68b609de;
 }
 
 .rb:hover {
@@ -24,7 +24,7 @@
 }
 
 .wr {
-	background-color: #2196f3;
+	background-color: #2196f3de;
 }
 
 .wr:hover {
@@ -32,23 +32,21 @@
 }
 
 .qb {
-	background-color: #f44336;
-}
-
-.qb:hover {
-	background-color: #DB2A1D;
+  &>:hover {
+    background-color: #DB2A1D;
+  }
+	background-color: #f44336de;
 }
 
 .te {
-	background-color: #ffc106;
-}
-
-.te:hover {
-	background-color: #E6A800;
+  &:hover {
+    background-color: #E6A800;
+  }
+	background-color: #ffc106de;
 }
 
 .dst, .k {
-	background-color: gray;
+	background-color: rgba(128, 128, 128, 0.815);
 }
 
 .dst:hover {

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from './checklist.svg';
-import './App.css';
 import PlayerContainer from './containers/PlayerContainer';
 import { Import, Undo } from './components';
+import './App.scss';
+import PickedTable from './components/PickedTable';
 
 class App extends Component {
   appHeader() {
@@ -21,9 +22,12 @@ class App extends Component {
       <div className="App">
         {this.appHeader()}
         <div className="table-row">
-          <div>
+          <div className="player-pool">
             <Undo store={store} />
             <PlayerContainer store={store} />
+          </div>
+          <div className="picked-players">
+            <PickedTable store={store} />
           </div>
         </div>
         <div className="import-row">
