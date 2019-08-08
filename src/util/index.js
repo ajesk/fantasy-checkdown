@@ -41,7 +41,6 @@ const importCsvData = (data) => {
   const headers = data[0].map(x => _.camelCase(x));
 
   return data.map((entry, i) => {
-    console.log(entry);
     if (i === 0) return;
     if (entry[0] === "" || typeof entry[0] === 'undefined') return;
 
