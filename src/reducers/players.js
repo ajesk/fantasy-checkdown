@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 function getLastPicked(state) {
   return Math.max(...state.filter(p => p.picked !== 0 && typeof p.picked !== 'undefined').map(p => p.picked), 0);
 }

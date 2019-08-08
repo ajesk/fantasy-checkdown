@@ -1,28 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
-import './PlayerTable.css';
+import './PlayerTable.scss';
 
-const PickedTable = ({playerData}) => {
+const PickedTable = ({ playerData }) => {
   console.log(playerData);
   return (
-      <Table bordered>
-        <thead>
-          <tr>
-            <th>Pick #</th>
-            <th>Name</th>
-          </tr>
-        </thead>
+    <Table bordered>
+      <thead>
+        <tr>
+          <th>Pick #</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
         {
-          playerData.map((player) => 
+          playerData.filter(player => player.picked).sort((a, b) => b.picked - a.picked).map((player) =>
             <tr>
               <td>{player.picked}</td>
               <td>{player.overall}</td>
             </tr>
           )
         }
-      </Table>
-)};
+      </tbody>
+    </Table>
+  )
+};
 
 PickedTable.propTypes = {
   playerData: PropTypes.array.isRequired,

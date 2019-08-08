@@ -1,0 +1,19 @@
+th {
+	text-align: center;
+}
+
+.player-tables {
+  display: flex;
+
+  .player-table {
+    flex: 1 0 auto;
+
+    margin: 0.5em;
+  }
+  
+  .picked-table {
+    flex: 0 0 auto;
+    
+    margin: 0.5em;
+  }
+}

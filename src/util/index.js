@@ -13,11 +13,15 @@ function getFpHeaderCols(line) {
 }
 
 function breakFpEntry(line, headers) {
+  return breakFpCsvEntry(line.split(','), headers);
+}
+
+function breakFpCsvEntry(lineArray, headers) {
   const data = {};
 
-  line.split(',').map((entry, i) => data[headers[i]] = entry.split('"').join(''));
+  lineArray.map((entry, i) => data[headers[i]] = entry.split('"').join(''));
 
-  return data;
+  return data
 }
 
 const parseFpCsv = (raw) => {
@@ -33,29 +37,15 @@ const parseFpCsv = (raw) => {
   }).filter((res) => typeof res !== 'undefined');
 }
 
-const parseRankings = (rawData) => {
-  let results = {};
-  const lines = rawData.split('\n');
-  let currentTier = '';
-  const offset = lines[1].split('\t')[1] ? 0 : 1;
+const importCsvData = (data) => {
+  const headers = data[0].map(x => _.camelCase(x));
 
-  lines.forEach((line) => {
-    const breakdown = line.split('\t');
+  return data.map((entry, i) => {
+    if (i === 0) return;
 
-    if (breakdown.length === 2) {
-      currentTier = breakdown[0];
-      results[currentTier] = {};
-    } else if (breakdown.length > 2) {
-      results[currentTier][breakdown[0]] = {
-        name: breakdown[1 + offset],
-        pos: breakdown[2 + offset].replace(/[0-9]/g, '').toLowerCase(),
-        posRank: Number(breakdown[2 + offset].match(/\d+/g)[0]),
-        adp: Number(breakdown[8 + offset])
-      };
-    }
-  });
-  return results;
+    return breakFpCsvEntry(entry, headers);
+  }).filter((res) => typeof res !== 'undefined');
 };
 
 const testMethods = { breakFpLines, getFpHeaderCols, breakFpEntry };
-export { parseRankings, parseFpCsv, testMethods };
+export { importCsvData, parseFpCsv, testMethods };

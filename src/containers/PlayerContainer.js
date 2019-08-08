@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { VisibilityFilters, pickPlayer } from '../actions';
 import { PlayerTable } from '../components';
-import PickedTable from '../components/PickedTable';
 
 const getAvailablePlayers = (filter, playerData = [], selected = []) => {
   switch (filter) {
@@ -29,4 +28,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PlayerTable, PickedTable);
+)(PlayerTable);
