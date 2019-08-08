@@ -2,7 +2,7 @@
   "name": "fantasy-checkdown",
   "version": "0.1.0",
   "private": true,
-  "homepage": "",
+  "homepage": ".",
   "dependencies": {
     "lodash": "^4.17.13",
     "node-sass": "^4.12.0",
