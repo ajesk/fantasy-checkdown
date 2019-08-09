@@ -46,10 +46,10 @@ class Import extends React.Component {
         </FormGroup>
         <CSVReader
           cssClass="csv-reader-input"
-          label="Select CSV with secret Death Star statistics"
+          label="Import FP CSV Rankings"
           onFileLoaded={this.handleCsvImport}
           onError={this.handleDarkSideForce}
-          inputId="ObiWan"
+          inputId="fp-rankings"
           inputStyle={{color: 'red'}}
         />
         <div className="import-button" onClick={this.handleSubmit}>Import</div>
