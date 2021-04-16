@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { VisibilityFilters } from '../actions';
-import PlayerTable from '../components/AvailablePlayers/PlayerTable';
+import { VisibilityFilters, pickPlayer } from '../actions';
+import { PlayerTable } from '../components';
 
 const getAvailablePlayers = (filter, playerData = [], selected = []) => {
   switch (filter) {
@@ -19,13 +19,13 @@ const mapStateToProps = (state) => {
   })
 };
 
-// const mapDispatchToProps = (dispatch) => ({
-//   pickPlayer: (rank) => {
-//     return pickPlayer(rank);
-//   }
-// });
+const mapDispatchToProps = (dispatch) => ({
+  pickPlayer: (rank) => {
+    return pickPlayer(rank);
+  }
+});
 
 export default connect(
-  mapStateToProps
-  // mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(PlayerTable);

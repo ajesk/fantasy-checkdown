@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { importPlayers } from '../actions';
-import { parseFpCsv, importCsvData } from '../util';
+import { parseFpCsv, importCsvData } from '../util/parseRankings';
 import CSVReader from 'react-csv-reader';
 import './Import.scss'
 
@@ -19,18 +19,16 @@ class Import extends React.Component {
     };
   }
 
-  
-
-  handleTAChange(e) {    
+  handleTAChange(e) {
     this.setState({ rawData: e.target.value });
   }
-  
+
   handleSubmit() {
     const { dispatch } = this.props;
-    
+
     dispatch(importPlayers(parseFpCsv(this.state.rawData)));
   }
-  
+
   handleCsvImport(csv) {
     const { dispatch } = this.props;
 
@@ -50,7 +48,7 @@ class Import extends React.Component {
           onFileLoaded={this.handleCsvImport}
           onError={this.handleDarkSideForce}
           inputId="fp-rankings"
-          inputStyle={{color: 'red'}}
+          inputStyle={{ color: 'red' }}
         />
         <div className="import-button" onClick={this.handleSubmit}>Import</div>
       </div>

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { PlayerTier } from './';
+import PlayerTier from './PlayerTier';
+import { pickPlayer} from '../../actions'
 import './PlayerTiers.css';
 
-const PlayerTiers = ({ players, playerOnClick }) => {
+const PlayerTiers = ({ players }) => {
   return players.map((p) => p.tier)
     .filter((v, i, a) => a.indexOf(v) === i)
     .sort((a, b) => a.tier > b.tier)
@@ -11,7 +12,6 @@ const PlayerTiers = ({ players, playerOnClick }) => {
       <PlayerTier
         key={tier}
         players={players.filter((p) => p.tier === tier)}
-        playerOnClick={playerOnClick}
         playerTier={tier}
       />
     );

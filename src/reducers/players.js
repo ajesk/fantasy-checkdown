@@ -5,6 +5,8 @@ function getLastPicked(state) {
 function pickPlayer(action, state) {
   const { rank } = action;
 
+  console.log(rank)
+
   return state.map(player => {
     if (player.rank === rank) player.picked = getLastPicked(state) + 1;
     return player
