@@ -4,6 +4,9 @@ import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { importPlayers } from '../../actions';
 import { parseFpCsv, importCsvData } from '../../util/parseRankings';
 import CSVReader from 'react-csv-reader';
+import Button from '@material-ui/core/Button';
+import ImportExportIcon from '@material-ui/icons/ImportExport';
+
 import './Import.scss';
 
 const Import = ({ dispatch }) => {
@@ -29,7 +32,14 @@ const Import = ({ dispatch }) => {
         inputId="fp-rankings"
         inputStyle={{ color: 'red' }}
       />
-      <div className="import-button" onClick={handleSubmit}>Import</div>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handleSubmit}
+        startIcon={<ImportExportIcon />}
+      >
+        Import
+      </Button>
     </div>
   );
 };
