@@ -18,9 +18,4 @@ Undo.propTypes = {
   dispatch: PropTypes.func.isRequired
 }
 
-Undo.defaultProps = {
-  dispatch: () => '',
-  playersPicked: false
-}
-
 export default connect()(Undo);

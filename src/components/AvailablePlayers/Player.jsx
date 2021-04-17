@@ -10,7 +10,6 @@ function getPosClass(pos) {
 }
 
 const Player = ({ player, dispatch }) => {
-  console.log(player)
   return <tr key={player.rk} className={getPosClass(player.pos)}>
     <td className="center" onClick={() => dispatch(pickPlayer(player.rk))}>
       <Glyphicon glyph="ok" />
