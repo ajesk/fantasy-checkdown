@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import { Player } from './'
+import Player from './Player'
 import './PlayerTier.css'
 
-const PlayerTier = ({ playerTier, players, playerOnClick }) => (
+const PlayerTier = ({ playerTier, players }) => (
   <tbody>
     <tr className="tier-header">
       <th colSpan={10}>{playerTier}</th>
@@ -13,7 +13,6 @@ const PlayerTier = ({ playerTier, players, playerOnClick }) => (
           <Player
             key={player.rank}
             player={player}
-            onClick={() => playerOnClick(player.rank)}
           />)
     }
   </tbody>
