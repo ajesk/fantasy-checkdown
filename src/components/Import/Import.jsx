@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import { importPlayers } from '../actions';
-import { parseFpCsv, importCsvData } from '../util/parseRankings';
+import { importPlayers } from '../../actions';
+import { parseFpCsv, importCsvData } from '../../util/parseRankings';
 import CSVReader from 'react-csv-reader';
 import './Import.scss'
 

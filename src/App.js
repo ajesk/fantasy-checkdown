@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './checklist.svg';
 import PlayerContainer from './containers/PlayerContainer';
-import { Import, Undo } from './components';
+import Import from './components/Import/Import';
+import { Undo } from './components';
 import './App.scss';
 
 const App = ({ store }) => (
