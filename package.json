@@ -26,6 +26,7 @@
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
+    "@testing-library/react": "^11.2.6",
     "gh-pages": "^1.2.0"
   },
   "browserslist": {
