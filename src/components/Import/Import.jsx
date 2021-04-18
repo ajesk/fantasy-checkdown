@@ -24,14 +24,6 @@ const Import = ({ dispatch }) => {
         <ControlLabel>Paste Tier Rankings</ControlLabel>
         <FormControl onChange={handleTAChange} componentClass="textarea" placeholder="tier rankings..." />
       </FormGroup>
-      <CSVReader
-        cssClass="csv-reader-input"
-        label="Import FP CSV Rankings"
-        onFileLoaded={handleCsvImport}
-        // onError={handleDarkSideForce}
-        inputId="fp-rankings"
-        inputStyle={{ color: 'red' }}
-      />
       <Button
         variant="contained"
         color="primary"
@@ -40,6 +32,14 @@ const Import = ({ dispatch }) => {
       >
         Import
       </Button>
+      <CSVReader
+        cssClass="csv-reader-input"
+        label="Import FP CSV Rankings"
+        onFileLoaded={handleCsvImport}
+        // onError={handleDarkSideForce}
+        inputId="fp-rankings"
+        inputStyle={{ color: 'red' }}
+      />
     </div>
   );
 };

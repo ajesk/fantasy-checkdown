@@ -6,8 +6,11 @@ import Button from '@material-ui/core/Button';
 import UndoIcon from '@material-ui/icons/Undo';
 import './Undo.scss';
 
-const Undo = ({ dispatch }) => {
-  return (
+const mapStateToProps = (state) => state;
+
+const Undo = ({ dispatch, players }) => {
+
+  return players.length !== 0 && (
     <Button
       variant="contained"
       color="secondary"
@@ -21,7 +24,8 @@ const Undo = ({ dispatch }) => {
 }
 
 Undo.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  players: PropTypes.array.isRequired,
 }
 
-export default connect()(Undo);
+export default connect(mapStateToProps)(Undo);
