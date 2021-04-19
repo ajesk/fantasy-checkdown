@@ -2,7 +2,6 @@ import React from 'react';
 import PlayerTable from './components/AvailablePlayers/PlayerTable';
 import Import from './components/Import/Import';
 import { Undo } from './components';
-import './App.scss';
 import Header from './components/Header/Header';
 
 const App = ({ store }) => (
