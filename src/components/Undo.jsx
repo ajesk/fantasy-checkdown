@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { undoPick } from '../actions';
 import Button from '@material-ui/core/Button';
 import UndoIcon from '@material-ui/icons/Undo';
-import './Undo.scss';
 
 const mapStateToProps = (state) => state;
 
