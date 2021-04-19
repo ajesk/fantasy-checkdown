@@ -1,32 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'react-bootstrap';
+import Table from '@material-ui/core/Table';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+
 import { connect } from 'react-redux';
-import './PlayerTable.scss';
 import PlayerTiers from './PlayerTiers';
 
 const mapStateToProps = (state) => {
   return ({
-    playerData: state.players,
+    availablePlayers: state.players.filter(p => !p.picked),
   })
 };
 
-const PlayerTable = ({ playerData }) => {
+const PlayerTable = ({ availablePlayers }) => {
   return (
-    playerData.length !== 0 ?
+    availablePlayers.length !== 0 ?
       <div className="player-tables">
         <div className="player-table">
-          <Table bordered>
-            <thead>
-              <tr>
-                <th></th>
-                <th>Rank</th>
-                <th>Name</th>
-                <th>Position</th>
-                <th>ADP</th>
-              </tr>
-            </thead>
-            {<PlayerTiers players={playerData.filter(p => !p.picked)} />}
+          <Table stickyHeader>
+            <TableHead>
+              <TableRow>
+                <TableCell align="center"></TableCell>
+                <TableCell align="center">Rank</TableCell>
+                <TableCell align="center">Name</TableCell>
+                <TableCell align="center">Position</TableCell>
+                <TableCell align="center">ADP</TableCell>
+              </TableRow>
+            </TableHead>
+            <PlayerTiers players={availablePlayers} />
           </Table>
         </div>
       </div>
