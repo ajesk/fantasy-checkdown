@@ -1,10 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import './PlayerTable.scss';
 import PlayerTiers from './PlayerTiers';
 
-const PlayerTable = ({ playerData, pickPlayer }) => {
+const mapStateToProps = (state) => {
+  return ({
+    playerData: state.players,
+  })
+};
+
+const PlayerTable = ({ playerData }) => {
   return (
     playerData.length !== 0 ?
       <div className="player-tables">
@@ -38,4 +45,6 @@ PlayerTable.defaultProps = {
   playerData: []
 }
 
-export default PlayerTable;
+export default connect(
+  mapStateToProps
+)(PlayerTable);

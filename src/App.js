@@ -1,5 +1,5 @@
 import React from 'react';
-import PlayerContainer from './containers/PlayerContainer';
+import PlayerTable from './components/AvailablePlayers/PlayerTable';
 import Import from './components/Import/Import';
 import { Undo } from './components';
 import './App.scss';
@@ -11,7 +11,7 @@ const App = ({ store }) => (
     <div className="table-row">
       <div className="player-pool">
         <Undo store={store} />
-        <PlayerContainer store={store} />
+        <PlayerTable store={store} />
       </div>
     </div>
     <div className="import-row">
@@ -21,7 +21,5 @@ const App = ({ store }) => (
     </div>
   </div>
 )
-
-
 
 export default App;
