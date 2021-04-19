@@ -1,19 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlayerTier from './PlayerTier';
-import './PlayerTiers.css';
 
 const PlayerTiers = ({ players }) => {
-  return players.map((p) => p.tiers)
-    .filter((v, i, a) => a.indexOf(v) === i)
-    .sort((a, b) => a.tiers > b.tiers)
-    .map((tier) =>
+  const orderedPlayersTiers = () =>
+    players.map((p) => p.tiers)
+      .filter((v, i, a) => a.indexOf(v) === i)
+      .sort((a, b) => a.tiers > b.tiers);
+
+  return (
+    orderedPlayersTiers().map((tier) =>
       <PlayerTier
         key={tier}
         players={players.filter((p) => p.tiers === tier)}
         playerTier={tier}
       />
-    );
+    )
+  );
 };
 
 PlayerTiers.propTypes = {

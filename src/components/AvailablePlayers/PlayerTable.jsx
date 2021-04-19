@@ -4,9 +4,20 @@ import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-
+import Paper from '@material-ui/core/Paper';
 import { connect } from 'react-redux';
 import PlayerTiers from './PlayerTiers';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+
+const useStyles = makeStyles((theme) => ({
+  tablePaper: {
+    marginTop: theme.spacing(2)
+  },
+  headerCell: {
+    'font-weight': 'bold',
+    fontSize: '1.5rem',
+  },
+}));
 
 const mapStateToProps = (state) => {
   return ({
@@ -15,24 +26,24 @@ const mapStateToProps = (state) => {
 };
 
 const PlayerTable = ({ availablePlayers }) => {
+  const classes = useStyles();
+
   return (
     availablePlayers.length !== 0 ?
-      <div className="player-tables">
-        <div className="player-table">
-          <Table stickyHeader>
-            <TableHead>
-              <TableRow>
-                <TableCell align="center"></TableCell>
-                <TableCell align="center">Rank</TableCell>
-                <TableCell align="center">Name</TableCell>
-                <TableCell align="center">Position</TableCell>
-                <TableCell align="center">ADP</TableCell>
-              </TableRow>
-            </TableHead>
-            <PlayerTiers players={availablePlayers} />
-          </Table>
-        </div>
-      </div>
+      <Paper elevation={3} outlined className={classes.tablePaper}>
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell className={classes.headerCell} align="center"></TableCell>
+              <TableCell className={classes.headerCell} align="center">Rank</TableCell>
+              <TableCell className={classes.headerCell}>Name</TableCell>
+              <TableCell className={classes.headerCell} align="center">Position</TableCell>
+              <TableCell className={classes.headerCell} align="center">ADP</TableCell>
+            </TableRow>
+          </TableHead>
+          <PlayerTiers players={availablePlayers} />
+        </Table>
+      </Paper>
       :
       ''
   )
