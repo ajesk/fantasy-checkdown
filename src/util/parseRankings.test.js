@@ -1,5 +1,5 @@
 import csv from '../demodata/short_rankings.csv.js';
-import { testMethods, parseFpCsv } from './';
+import { testMethods, parseFpCsv } from './parseRankings';
 
 describe('fpCsv', () => {
   it('should have the demo data', () => {

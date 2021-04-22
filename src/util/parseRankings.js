@@ -37,16 +37,5 @@ const parseFpCsv = (raw) => {
   }).filter((res) => typeof res !== 'undefined');
 }
 
-const importCsvData = (data) => {
-  const headers = data[0].map(x => _.camelCase(x));
-
-  return data.map((entry, i) => {
-    if (i === 0) return;
-    if (entry[0] === "" || typeof entry[0] === 'undefined') return;
-
-    return breakFpCsvEntry(entry, headers);
-  }).filter((res) => typeof res !== 'undefined');
-};
-
 const testMethods = { breakFpLines, getFpHeaderCols, breakFpEntry };
-export { importCsvData, parseFpCsv, testMethods };
+export { parseFpCsv, testMethods };

@@ -8,6 +8,7 @@ import UndoIcon from '@material-ui/icons/Undo';
 const mapStateToProps = (state) => state;
 
 const Undo = ({ dispatch, players }) => {
+  console.log(players)
 
   return players.length !== 0 && (
     <Button
