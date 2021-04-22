@@ -1,24 +1,83 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Glyphicon } from 'react-bootstrap';
-import './Player.scss'
+import CheckCircleTwoToneIcon from '@material-ui/icons/CheckCircleTwoTone';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import IconButton from '@material-ui/core/IconButton';
+import green from '@material-ui/core/colors/green';
 import { pickPlayer } from '../../actions';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+
+const useStyles = makeStyles({
+  player: {
+    opacity: 1,
+    '-webkit-transition': 'opacity 1000ms linear',
+    transition: 'opacity 1000ms linear',
+  },
+  playerData: {
+    color: 'whitesmoke',
+    'font-weight': 'bold',
+    fontSize: '1.5rem',
+    padding: '1px 24px 1px 16px'
+  },
+  rb: {
+    backgroundColor: '#68b609de',
+    '&:hover': {
+      backgroundColor: '#4F9D00'
+    }
+  },
+  wr: {
+    backgroundColor: '#2196f3de',
+    '&:hover': {
+      backgroundColor: '#087DDA'
+    }
+  },
+  qb: {
+    backgroundColor: '#DB2A1D',
+    '&:hover': {
+      backgroundColor: '#f44336de'
+    }
+  },
+  te: {
+    backgroundColor: '#E6A800',
+    '&:hover': {
+      backgroundColor: '#ffc106de'
+    }
+  },
+  k: {
+    backgroundColor: '#808080',
+    '&:hover': {
+      backgroundColor: '#676767'
+    }
+  },
+  dst: {
+    backgroundColor: '#808080',
+    '&:hover': {
+      backgroundColor: '#676767'
+    }
+  }
+});
 
 function getPosClass(pos) {
   return pos.replace(/[0-9]/g, '').toLowerCase();
 }
 
 const Player = ({ player, dispatch }) => {
-  return <tr key={player.rk} className={getPosClass(player.pos)}>
-    <td className="center" onClick={() => dispatch(pickPlayer(player.rk))}>
-      <Glyphicon glyph="ok" />
-    </td>
-    <td className="center">{player.rk}</td>
-    <td>{player.playerName}</td>
-    <td className="center">{player.pos}</td>
-    <td className="center">{player.adp}</td>
-  </tr>};
+  const classes = useStyles();
+
+  return <TableRow key={player.rk} className={`${classes.player} ${classes[getPosClass(player.pos)]}`}>
+    <TableCell padding="none" align="center">
+      <IconButton aria-label={`select ${player.playerName}`} onClick={() => dispatch(pickPlayer(player.rk))}>
+        <CheckCircleTwoToneIcon fontSize="large" style={{ color: green[100] }} />
+      </IconButton>
+    </TableCell>
+    <TableCell className={classes.playerData} align="center">{player.rk}</TableCell>
+    <TableCell className={classes.playerData}>{player.playerName}</TableCell>
+    <TableCell className={classes.playerData} align="center">{player.pos}</TableCell>
+    <TableCell className={classes.playerData} align="center">{player.avg}</TableCell>
+  </TableRow>
+};
 
 Player.propTypes = {
   onClick: PropTypes.func.isRequired,

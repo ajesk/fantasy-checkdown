@@ -5,13 +5,11 @@ import { parseFpCsv } from '../../util/parseRankings';
 import { Button, Input, ButtonBase, Grid, TextField, Typography, Divider } from '@material-ui/core';
 import ImportExportIcon from '@material-ui/icons/ImportExport';
 import SaveIcon from '@material-ui/icons/Save';
-
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   header: {
     paddingBottom: '2em'
-    
   },
   importBox: {
     paddingBottom: '2em'

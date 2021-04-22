@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'react-bootstrap';
-// import './PlayerTable.scss';
+import Table from '@material-ui/core/Table';
 
 const PickedTable = ({ playerData }) =>(
   <Table bordered>

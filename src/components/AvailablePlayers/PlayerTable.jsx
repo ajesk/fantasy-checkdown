@@ -1,28 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'react-bootstrap';
-import './PlayerTable.scss';
+import Table from '@material-ui/core/Table';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import Paper from '@material-ui/core/Paper';
+import { connect } from 'react-redux';
 import PlayerTiers from './PlayerTiers';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 
-const PlayerTable = ({ playerData, pickPlayer }) => {
+const useStyles = makeStyles((theme) => ({
+  tablePaper: {
+    marginTop: theme.spacing(2)
+  },
+  headerCell: {
+    'font-weight': 'bold',
+    fontSize: '1.5rem',
+  },
+}));
+
+const mapStateToProps = (state) => {
+  return ({
+    availablePlayers: state.players.filter(p => !p.picked),
+  })
+};
+
+const PlayerTable = ({ availablePlayers }) => {
+  const classes = useStyles();
+
   return (
-    playerData.length !== 0 ?
-      <div className="player-tables">
-        <div className="player-table">
-          <Table bordered>
-            <thead>
-              <tr>
-                <th></th>
-                <th>Rank</th>
-                <th>Name</th>
-                <th>Position</th>
-                <th>ADP</th>
-              </tr>
-            </thead>
-            {<PlayerTiers players={playerData.filter(p => !p.picked)} />}
-          </Table>
-        </div>
-      </div>
+    availablePlayers.length !== 0 ?
+      <Paper elevation={3} outlined className={classes.tablePaper}>
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell className={classes.headerCell} align="center"></TableCell>
+              <TableCell className={classes.headerCell} align="center">Rank</TableCell>
+              <TableCell className={classes.headerCell}>Name</TableCell>
+              <TableCell className={classes.headerCell} align="center">Position</TableCell>
+              <TableCell className={classes.headerCell} align="center">ADP</TableCell>
+            </TableRow>
+          </TableHead>
+          <PlayerTiers players={availablePlayers} />
+        </Table>
+      </Paper>
       :
       ''
   )
@@ -38,4 +59,6 @@ PlayerTable.defaultProps = {
   playerData: []
 }
 
-export default PlayerTable;
+export default connect(
+  mapStateToProps
+)(PlayerTable);
