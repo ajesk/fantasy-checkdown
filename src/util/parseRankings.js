@@ -30,6 +30,7 @@ const parseFpCsv = (raw) => {
   return breakFpLines(raw).map((line, i) => {
     if (i === 0) {
       headers = getFpHeaderCols(line);
+      // eslint-disable-next-line
       return;
     }
 

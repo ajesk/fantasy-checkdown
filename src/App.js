@@ -1,7 +1,7 @@
 import React from 'react';
 import PlayerTable from './components/AvailablePlayers/PlayerTable';
 import Import from './components/Import/Import';
-import { Undo } from './components';
+import Undo from './components/Content/Undo/Undo';
 import Header from './components/Header/Header';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';

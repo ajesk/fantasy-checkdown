@@ -38,10 +38,10 @@ const Import = ({ dispatch }) => {
   };
 
   return (
-    <Grid container direction="column" alignContent="center" justifyContent="center">
+    <Grid container direction="column" alignContent="center" justify="center">
       <Grid item className={classes.header}>
         <Typography variant="h2">Import FP CSV Data</Typography>
-      </Grid>
+      </Grid> 
       <Grid container direction="row" alignContent="center" justify="space-evenly" className={classes.importBox}>
         <Grid container item xs={4} alignContent="center" justify="center">
           <TextField
