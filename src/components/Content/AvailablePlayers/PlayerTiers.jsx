@@ -20,7 +20,6 @@ const PlayerTiers = ({ players }) => {
 };
 
 PlayerTiers.propTypes = {
-  playerOnClick: PropTypes.func.isRequired,
   players: PropTypes.arrayOf(
     PropTypes.shape({}).isRequired
   ).isRequired,

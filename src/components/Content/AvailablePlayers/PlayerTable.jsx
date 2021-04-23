@@ -30,7 +30,7 @@ const PlayerTable = ({ availablePlayers }) => {
 
   return (
     availablePlayers.length !== 0 ?
-      <Paper elevation={3} outlined className={classes.tablePaper}>
+      <Paper elevation={3} outlined="true" className={classes.tablePaper}>
         <Table size="small">
           <TableHead>
             <TableRow>
@@ -50,13 +50,7 @@ const PlayerTable = ({ availablePlayers }) => {
 };
 
 PlayerTable.propTypes = {
-  pickPlayer: PropTypes.func.isRequired,
-  playerData: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-}
-
-PlayerTable.defaultProps = {
-  pickPlayer: () => '',
-  playerData: []
+  availablePlayers: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 }
 
 export default connect(

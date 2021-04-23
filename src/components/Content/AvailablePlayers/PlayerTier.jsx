@@ -27,7 +27,7 @@ const PlayerTier = ({ playerTier, players }) => {
       {
         players.map((player) =>
           <Player
-            key={player.rank}
+            key={player.rk}
             player={player}
           />)
       }
@@ -37,7 +37,6 @@ const PlayerTier = ({ playerTier, players }) => {
 
 PlayerTier.propTypes = {
   playerTier: PropTypes.string.isRequired,
-  playerOnClick: PropTypes.func.isRequired,
   players: PropTypes.arrayOf(
     PropTypes.shape({})
   ).isRequired,

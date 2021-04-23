@@ -80,7 +80,6 @@ const Player = ({ player, dispatch }) => {
 };
 
 Player.propTypes = {
-  onClick: PropTypes.func.isRequired,
   player: PropTypes.object.isRequired,
 }
 
