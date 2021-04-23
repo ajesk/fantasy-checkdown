@@ -24,7 +24,7 @@ const Header = () => {
           <Typography variant="h3" component="h1" className={classes.title}>
             Fantasy Checkdown Chart
           </Typography>
-          <IconButton color="inherit" aria-label="menu" onClick={() => setDrawer(true)}>
+          <IconButton color="inherit" aria-label="show menu" onClick={() => setDrawer(true)}>
             <MenuIcon fontSize="large" />
           </IconButton>
         </Toolbar>
