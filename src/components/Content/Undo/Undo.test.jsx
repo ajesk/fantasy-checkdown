@@ -2,7 +2,7 @@ import React from 'react';
 import Undo from './Undo';
 import { render, fireEvent } from '@testing-library/react'
 import { createStore } from 'redux';
-import rootReducer from '../reducers';
+import rootReducer from '../../../reducers';
 
 it('renders with no button', () => {
   const { queryByText } = render(<Undo store={createStore(rootReducer)} players={[]} />);

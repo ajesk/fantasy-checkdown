@@ -22,7 +22,7 @@ const PlayerTier = ({ playerTier, players }) => {
   return (
     <TableBody>
       <TableRow className={classes.tierHead}>
-        <TableCell align="center" className={classes.tierNumber} colSpan={10}>{playerTier}</TableCell>
+        <TableCell align="center" className={classes.tierNumber} colSpan={10}>Tier {playerTier}</TableCell>
       </TableRow>
       {
         players.map((player) =>

@@ -28,6 +28,8 @@ const mapStateToProps = (state) => {
 const PlayerTable = ({ availablePlayers }) => {
   const classes = useStyles();
 
+  console.log(availablePlayers)
+
   return (
     availablePlayers.length !== 0 ?
       <Paper elevation={3} outlined="true" className={classes.tablePaper}>
