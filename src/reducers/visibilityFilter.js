@@ -1,12 +1,22 @@
 import { VisibilityFilters } from '../actions';
 
-const visibilityFilter = (state = VisibilityFilters.SHOW_AVAILABLE, action) => {
-  switch (action.type) {
-    case 'SET_VISIBILITY_FILTER':
-      return action.filter
-    default:
-      return state
-  }
+const toggle = (action, state) => {
+  state[action] = 1 - (state[action] | 0);
+  return state;
 }
 
-export default visibilityFilter;
+const visibilityFilters =
+  (state = [VisibilityFilters.SHOW_AVAILABLE, VisibilityFilters.SHOW_PICKED], action) => {
+    switch (action.type) {
+      case 'TOGGLE_CONTENT':
+        return toggle(action.type, state)
+      case 'HIDE_ALL':
+        return [];
+      case 'SHOW_ALL':
+        return [VisibilityFilters.SHOW_AVAILABLE, VisibilityFilters.SHOW_PICKED];
+      default:
+        return state
+    }
+  }
+
+export default visibilityFilters;

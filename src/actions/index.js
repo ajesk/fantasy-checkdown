@@ -1,5 +1,10 @@
-export const setVisibilityFilter = filter => ({
-  type: 'SET_VISIBILITY_FILTER',
+export const VisibilityFilters = {
+  SHOW_AVAILABLE: 'SHOW_AVAILABLE',
+  SHOW_PICKED: 'SHOW_PICKED'
+};
+
+export const toggleContent = filter => ({
+  type: 'TOGGLE_CONTENT',
   filter
 });
 
@@ -17,7 +22,3 @@ export const undoPick = () => ({
   type: 'UNDO_PICK'
 });
 
-export const VisibilityFilters = {
-  SHOW_AVAILABLE: 'SHOW_AVAILABLE',
-  SHOW_PICKED: 'SHOW_PICKED'
-};
