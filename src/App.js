@@ -1,12 +1,10 @@
 import React from 'react';
-import PlayerTable from './components/Content/AvailablePlayers/PlayerTable';
 import Import from './components/Import/Import';
-import Undo from './components/Content/Undo/Undo';
 import Header from './components/Header/Header';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import { Paper } from '@material-ui/core';
+import PlayerContent from './components/Content/PlayerContent';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,10 +26,7 @@ const App = () => {
     <Box className={classes.root}>
       <Header />
       <Grid container direction="column" justify="center" alignContent="center" className={classes.content}>
-        <Paper className={classes.tablePlaceMat}>
-          <Undo />
-          <PlayerTable />
-        </Paper>
+        <PlayerContent />
         <Import />
       </Grid>
     </Box>
