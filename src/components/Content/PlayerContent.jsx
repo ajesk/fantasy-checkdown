@@ -2,19 +2,19 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import React from 'react';
 import { connect } from 'react-redux';
-import { VisibilityFilters, toggleContent } from '../../actions';
+import { VisibilityFilters } from '../../actions';
 import { makeStyles } from '@material-ui/core/styles';
 import PlayerTable from './AvailablePlayers/PlayerTable';
-import Undo from './Undo/Undo'
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import PickedTable from './PickedPlayers/PickedTable';
+import Grid from '@material-ui/core/Grid';
+import PlayerContentToolbar from './PlayerContentToolbar';
 
 
 const mapStateToProps = (state) => state;
 
 const useStyles = makeStyles((theme) => ({
-  tablePlaceMat: {
-    // padding: theme.spacing(1)
+  gridItem: {
+    margin: `0 ${theme.spacing(1)}px`
   }
 }));
 
@@ -25,40 +25,24 @@ const PlayerContent = ({ dispatch, visibilityFilters, players = [] }) => {
     (
       <Box>
         <Paper className={classes.tablePlaceMat}>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={visibilityFilters[VisibilityFilters.SHOW_AVAILABLE]}
-                onChange={() => dispatch(toggleContent(VisibilityFilters.SHOW_AVAILABLE))}
-                name={VisibilityFilters.SHOW_AVAILABLE}
-                color="primary"
-                inputProps={{ 'aria-label': 'toggle available players visibility' }}
-              />
+          <PlayerContentToolbar />
+          <Grid container direction="row" justify="space-between">
+            {visibilityFilters[VisibilityFilters.SHOW_AVAILABLE] &&
+              <Grid item xs className={classes.gridItem}>
+                <PlayerTable />
+              </Grid>
             }
-            label="Available Players"
-            labelPlacement="start"
-          />
-          <FormControlLabel
-            control={
-              <Switch
-                checked={visibilityFilters[VisibilityFilters.SHOW_PICKED]}
-                onChange={() => dispatch(toggleContent(VisibilityFilters.SHOW_PICKED))}
-                name={VisibilityFilters.SHOW_PICKED}
-                color="primary"
-                inputProps={{ 'aria-label': 'toggle picked players visibility' }}
-              />
+            {
+              visibilityFilters[VisibilityFilters.SHOW_PICKED] &&
+              <Grid item xs className={classes.gridItem}>
+                <PickedTable />
+              </Grid>
             }
-            label="Picked Players"
-            labelPlacement="start"
-          />
-          <Undo />
-          {visibilityFilters[VisibilityFilters.SHOW_AVAILABLE] && <PlayerTable />}
-          {visibilityFilters[VisibilityFilters.SHOW_PICKED] && 'YOLO'}
+          </Grid>
         </Paper>
       </Box>
     ) :
     '';
 };
-
 
 export default connect(mapStateToProps)(PlayerContent);

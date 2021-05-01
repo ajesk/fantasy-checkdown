@@ -17,7 +17,6 @@ const useStyles = makeStyles({
   },
   playerData: {
     color: 'whitesmoke',
-    'font-weight': 'bold',
     fontSize: '1.5rem',
     padding: '1px 24px 1px 16px'
   },
