@@ -1,7 +1,22 @@
 {
-  "main.css": "static/css/main.34399a40.css",
-  "main.css.map": "static/css/main.34399a40.css.map",
-  "main.js": "static/js/main.64ed1d19.js",
-  "main.js.map": "static/js/main.64ed1d19.js.map",
-  "static/media/checklist.svg": "static/media/checklist.57270fed.svg"
+  "files": {
+    "main.css": "/fantasy-checkdown/static/css/main.7ca993ba.chunk.css",
+    "main.js": "/fantasy-checkdown/static/js/main.972b8d7b.chunk.js",
+    "main.js.map": "/fantasy-checkdown/static/js/main.972b8d7b.chunk.js.map",
+    "runtime-main.js": "/fantasy-checkdown/static/js/runtime-main.93c499ae.js",
+    "runtime-main.js.map": "/fantasy-checkdown/static/js/runtime-main.93c499ae.js.map",
+    "static/js/2.8ec5d5aa.chunk.js": "/fantasy-checkdown/static/js/2.8ec5d5aa.chunk.js",
+    "static/js/2.8ec5d5aa.chunk.js.map": "/fantasy-checkdown/static/js/2.8ec5d5aa.chunk.js.map",
+    "index.html": "/fantasy-checkdown/index.html",
+    "precache-manifest.07688605c46bfe2e1bd34523f4312980.js": "/fantasy-checkdown/precache-manifest.07688605c46bfe2e1bd34523f4312980.js",
+    "service-worker.js": "/fantasy-checkdown/service-worker.js",
+    "static/css/main.7ca993ba.chunk.css.map": "/fantasy-checkdown/static/css/main.7ca993ba.chunk.css.map",
+    "static/js/2.8ec5d5aa.chunk.js.LICENSE.txt": "/fantasy-checkdown/static/js/2.8ec5d5aa.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.93c499ae.js",
+    "static/js/2.8ec5d5aa.chunk.js",
+    "static/css/main.7ca993ba.chunk.css",
+    "static/js/main.972b8d7b.chunk.js"
+  ]
 }
