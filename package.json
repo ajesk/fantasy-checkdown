@@ -6,7 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
-    "lodash": "^4.17.21",
+    "lodash.camelcase": "^4.3.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-redux": "^5.0.7",
