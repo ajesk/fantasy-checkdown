@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   drawer: {
-    width: theme.spacing(40),
+    width: theme.spacing(50),
     margin: theme.spacing(2)
   }
 }));
@@ -47,14 +47,14 @@ const Header = () => {
             <li>Tier drafting falls apart after a number of rounds (7-8)</li>
             <li>Know when to break the rules, practice ahead of time to understand the flow of drafting</li>
           </ol>
-          <Typography variant="h3">How to use</Typography>
-            <ol>
-              <li>Get FP draft rankings CSV</li>
-              <li>Copy the text to the text box or upload the CSV directly</li>
-              <li>Click Import</li>
-              <li>Players will be listed out based upon tiers from the platform</li>
-              <li>Eliminate players as they are picked in the draft to get a good picture of who to draft</li>
-            </ol>
+          <Typography variant="h3">How to use</Typography> 
+          <ol>
+            <li>Get FP draft rankings CSV from <a href="https://www.fantasypros.com/nfl/rankings/half-point-ppr-cheatsheets.php">here</a></li>
+            <li>Copy the text to the text box or upload the CSV directly</li>
+            <li>Click Import</li>
+            <li>Players will be listed out based upon tiers from the platform</li>
+            <li>Eliminate players as they are picked in the draft to get a good picture of who to draft</li>
+          </ol>
         </Box>
       </Drawer >
     </>
