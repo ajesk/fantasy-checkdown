@@ -70,6 +70,9 @@ const Player = ({ player, dispatch }) => {
       <IconButton aria-label={`select ${player.playerName}`} onClick={() => dispatch(pickPlayer(player.rk))}>
         <CheckCircleTwoToneIcon fontSize="large" style={{ color: green[100] }} />
       </IconButton>
+      <IconButton aria-label={`select ${player.playerName}`} onClick={() => dispatch(pickPlayer(player.rk))}>
+        <CheckCircleTwoToneIcon fontSize="large" style={{ color: green[100] }} />
+      </IconButton>
     </TableCell>
     <TableCell className={classes.playerData} align="center">{player.rk}</TableCell>
     <TableCell className={classes.playerData}>{player.playerName}</TableCell>

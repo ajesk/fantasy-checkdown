@@ -1,4 +1,4 @@
-import _ from 'lodash.camelcase';
+import camelCase from 'lodash.camelcase';
 
 /**
  * Currently just supporting the FantasyPros csv dataset
@@ -9,7 +9,7 @@ function breakFpLines(raw) {
 }
 
 function getFpHeaderCols(line) {
-  return line.split(',').map((entry) => _.camelCase(entry));
+  return line.split(',').map((entry) => camelCase(entry));
 }
 
 function breakFpEntry(line, headers) {
