@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CheckCircleTwoToneIcon from '@material-ui/icons/CheckCircleTwoTone';
+import CancelIcon from '@material-ui/icons/CancelTwoTone';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import IconButton from '@material-ui/core/IconButton';
@@ -68,10 +69,10 @@ const Player = ({ player, dispatch }) => {
   return <TableRow key={player.rk} className={`${classes.player} ${classes[getPosClass(player.pos)]}`}>
     <TableCell padding="none" align="center">
       <IconButton aria-label={`select ${player.playerName}`} onClick={() => dispatch(pickPlayer(player.rk))}>
-        <CheckCircleTwoToneIcon fontSize="large" style={{ color: green[100] }} />
+        <CheckCircleTwoToneIcon fontSize="large" style={{ color: green[1000] }} />
       </IconButton>
       <IconButton aria-label={`select ${player.playerName}`} onClick={() => dispatch(pickPlayer(player.rk))}>
-        <CheckCircleTwoToneIcon fontSize="large" style={{ color: green[100] }} />
+        <CancelIcon fontSize="large" color="secondary" />
       </IconButton>
     </TableCell>
     <TableCell className={classes.playerData} align="center">{player.rk}</TableCell>
