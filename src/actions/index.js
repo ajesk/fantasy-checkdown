@@ -18,6 +18,11 @@ export const pickPlayer = rank => ({
   rank
 });
 
+export const draftPlayer = rank => ({
+  type: 'DRAFT_PLAYER',
+  rank
+});
+
 export const undoPick = () => ({
   type: 'UNDO_PICK'
 });

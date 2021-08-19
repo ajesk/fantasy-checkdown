@@ -10,24 +10,50 @@ function pickPlayer(action, state) {
 
   return state.map(player =>
     player.rk === rank ?
-      { ...player, picked: getLastPickedNumber(state) + 1 } :
+      setPickedPlayer(player, state) :
       player
   );
+}
+
+function draftPlayer(action, state) {
+  const { rank } = action;
+
+  return state.map(player =>
+    player.rk === rank ?
+      setPickedPlayer(player, state, true) :
+      player
+  );
+}
+
+function setPickedPlayer(player, state, drafted = false) {
+  return {
+    ...player,
+    picked: getLastPickedNumber(state) + 1,
+    drafted,
+    tierBreak: state.some(x => !x.picked && parseInt(x.tiers) < parseInt(player.tiers))
+  };
 }
 
 function undoLastPick(state) {
   const lastPicked = getLastPickedNumber(state);
 
   return state.map(player => {
-    if (player.picked === lastPicked) delete player.picked
+    if (player.picked === lastPicked) {
+      delete player.picked
+      delete player.tierBreak
+      delete player.drafted
+    }
     return player;
-  })
+  });
 }
 
 const players = (state = [], action) => {
   switch (action.type) {
     case 'PICK_PLAYER': {
       return pickPlayer(action, state);
+    }
+    case 'DRAFT_PLAYER': {
+      return draftPlayer(action, state);
     }
     case 'UNDO_PICK': {
       return undoLastPick(state);

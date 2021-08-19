@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const PlayerContent = ({ dispatch, visibilityFilters, players = [] }) => {
+const PlayerContent = ({ visibilityFilters, players = [] }) => {
   const classes = useStyles();
 
   return players.length ?

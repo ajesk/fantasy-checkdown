@@ -7,7 +7,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import IconButton from '@material-ui/core/IconButton';
 import green from '@material-ui/core/colors/green';
-import { pickPlayer } from '../../../actions';
+import { draftPlayer, pickPlayer } from '../../../actions';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyles = makeStyles({
@@ -68,7 +68,7 @@ const Player = ({ player, dispatch }) => {
 
   return <TableRow key={player.rk} className={`${classes.player} ${classes[getPosClass(player.pos)]}`}>
     <TableCell padding="none" align="center">
-      <IconButton aria-label={`select ${player.playerName}`} onClick={() => dispatch(pickPlayer(player.rk))}>
+      <IconButton aria-label={`select ${player.playerName}`} onClick={() => dispatch(draftPlayer(player.rk))}>
         <CheckCircleTwoToneIcon fontSize="large" style={{ color: green[1000] }} />
       </IconButton>
       <IconButton aria-label={`select ${player.playerName}`} onClick={() => dispatch(pickPlayer(player.rk))}>

@@ -18,11 +18,18 @@ const useStyles = makeStyles({
     fontSize: '1.5rem',
     'font-weight': 'bold',
     padding: '1px 24px 1px 16px'
+  },
+  draftedTierBreak: {
+    border: '3px solid red'
+  },
+  pickedTierBreak: {
+    border: '3px solid green'
   }
 });
 
 const PickedTable = ({ pickedPlayers }) => {
   const classes = useStyles();
+  const tierBreakStyle = (drafted) => drafted ? classes.draftedTierBreak : classes.pickedTierBreak;
 
   return (
     <Paper elevation={3} outlined="true">
@@ -39,7 +46,7 @@ const PickedTable = ({ pickedPlayers }) => {
           {
             pickedPlayers.sort((a, b) => b.picked - a.picked)
               .map((player) =>
-                <TableRow key={player.picked}>
+                <TableRow key={player.picked} selected={player.drafted} className={player.tierBreak ? tierBreakStyle(player.drafted) : ''}>
                   {[player.picked, player.tiers, player.playerName, player.pos.replace(/[0-9]/g, '')]
                     .map((columnData, i) =>
                       <TableCell key={i} className={classes.playerData}>{columnData}</TableCell>
