@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { VisibilityFilters, toggleContent } from '../../actions';
 import { makeStyles } from '@material-ui/core/styles';
-import Undo from './Undo/Undo'
+import Undo from './Undo/Undo';
+import Reset from './Reset/Reset';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
@@ -19,12 +20,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const PlayerContentToolbar = ({ dispatch, visibilityFilters }) => {
+const PlayerContentToolbar = ({ dispatch, visibilityFilters, players = [] }) => {
   const classes = useStyles();
 
   return (
     <Grid container direction="row" justify="space-between" className={classes.grid}>
       <Undo />
+      <Reset />
       <Grid item>
         <FormControlLabel
           control={
@@ -53,7 +55,7 @@ const PlayerContentToolbar = ({ dispatch, visibilityFilters }) => {
           labelPlacement="start"
         />
       </Grid>
-      </Grid>
+    </Grid>
   );
 };
 

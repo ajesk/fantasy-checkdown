@@ -27,3 +27,6 @@ export const undoPick = () => ({
   type: 'UNDO_PICK'
 });
 
+export const reset = () => ({
+  type: "RESET"
+});

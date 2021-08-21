@@ -58,6 +58,9 @@ const players = (state = [], action) => {
     case 'UNDO_PICK': {
       return undoLastPick(state);
     }
+    case 'RESET': {
+      return [];
+    }
     case 'IMPORT_PLAYERS': {
       return action.data;
     }

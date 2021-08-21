@@ -13,9 +13,6 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     padding: theme.spacing(5)
-  },
-  tablePlaceMat: {
-    // padding: theme.spacing(1)
   }
 }));
 
