@@ -36,12 +36,12 @@ const Reset = ({ dispatch, players = [] }) => {
         <Button
           variant="contained"
           color="secondary"
-          startIcon={< UndoIcon />}
+          startIcon={<UndoIcon />}
           onClick={() => setConfirm(true)}
 
         >
           Reset
-        </Button >
+        </Button>
         <Modal
           open={showConfirm}
           onClose={() => setConfirm(false)}

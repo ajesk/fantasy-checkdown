@@ -8,6 +8,7 @@ import PlayerTable from './AvailablePlayers/PlayerTable';
 import PickedTable from './PickedPlayers/PickedTable';
 import Grid from '@material-ui/core/Grid';
 import PlayerContentToolbar from './PlayerContentToolbar';
+import MyTeamModal from './MyTeam/MyTeamModal';
 
 
 const mapStateToProps = (state) => state;
@@ -40,6 +41,7 @@ const PlayerContent = ({ visibilityFilters, players = [] }) => {
             }
           </Grid>
         </Paper>
+        <MyTeamModal show={visibilityFilters[VisibilityFilters.SHOW_MY_TEAM]} players={players} />
       </Box>
     ) :
     '';
