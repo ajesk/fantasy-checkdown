@@ -24,6 +24,14 @@ const useStyles = makeStyles({
   },
   pickedTierBreak: {
     border: '3px solid green'
+  },
+  tableRow: {
+    "&.Mui-selected, &.Mui-selected:hover": {
+      backgroundColor: "lightblue",
+      "& > .MuiTableCell-root": {
+        color: "black"
+      }
+    }
   }
 });
 
@@ -46,7 +54,12 @@ const PickedTable = ({ pickedPlayers }) => {
           {
             pickedPlayers.sort((a, b) => b.picked - a.picked)
               .map((player) =>
-                <TableRow key={player.picked} selected={player.drafted} className={player.tierBreak ? tierBreakStyle(player.drafted) : ''}>
+                <TableRow key={player.picked}
+                  selected={player.drafted}
+                  hover
+                  classes={{ root: classes.tableRow }}
+                  className={player.tierBreak ? tierBreakStyle(player.drafted) : ''}
+                >
                   {[player.picked, player.tiers, player.playerName, player.pos.replace(/[0-9]/g, '')]
                     .map((columnData, i) =>
                       <TableCell key={i} className={classes.playerData}>{columnData}</TableCell>
