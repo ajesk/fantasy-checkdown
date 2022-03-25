@@ -78,7 +78,7 @@ const Player = ({ player, dispatch }) => {
     <TableCell className={classes.playerData} align="center">{player.rk}</TableCell>
     <TableCell className={classes.playerData}>{player.playerName}</TableCell>
     <TableCell className={classes.playerData} align="center">{player.pos}</TableCell>
-    <TableCell className={classes.playerData} align="center">{player.avg}</TableCell>
+    <TableCell className={classes.playerData} align="center">{player.ecrVsAdp}</TableCell>
   </TableRow>
 };
 

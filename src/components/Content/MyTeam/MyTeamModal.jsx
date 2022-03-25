@@ -8,6 +8,7 @@ import Fade from '@material-ui/core/fade';
 import Backdrop from '@material-ui/core/Backdrop';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import { DataGrid } from '@mui/x-data-grid';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,9 +24,20 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(0.5)
   }
 }));
+const columns = [
+  { field: 'picked', headerName: 'Picked', width: 90 },
+  { field: 'tiers', headerName: 'Tier', width: 90 },
+  { field: 'pos', headerName: 'Position', width: 90 },
+  { field: 'playerName', headerName: 'Name', width: 150 }];
 
 const MyTeamModal = ({ dispatch, players, show }) => {
   const classes = useStyles();
+  const myTeam = players.filter(player => player.drafted)
+    .map((player, i) => {
+      player.id = i;
+      return player;
+    });
+  console.log(myTeam)
 
   return (
     <Modal
@@ -42,6 +54,11 @@ const MyTeamModal = ({ dispatch, players, show }) => {
       <Fade in={show}>
         <Paper className={classes.paper}>
           <Typography>My Team</Typography>
+          <DataGrid
+            rows={myTeam}
+            columns={columns}
+            pageSize={20}
+          />
           <Button
             variant="contained"
             color="default"

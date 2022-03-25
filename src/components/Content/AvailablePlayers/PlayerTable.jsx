@@ -38,7 +38,7 @@ const PlayerTable = ({ availablePlayers }) => {
               <TableCell className={classes.headerCell} align="center">Rank</TableCell>
               <TableCell className={classes.headerCell}>Name</TableCell>
               <TableCell className={classes.headerCell} align="center">Position</TableCell>
-              <TableCell className={classes.headerCell} align="center">ADP</TableCell>
+              <TableCell className={classes.headerCell} align="center">Value</TableCell>
             </TableRow>
           </TableHead>
           <PlayerTiers players={availablePlayers} />
