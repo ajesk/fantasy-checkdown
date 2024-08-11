@@ -2,28 +2,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { importPlayers } from '../../actions';
 import { parseFpCsv } from '../../util/parseRankings';
-import { Button, Input, ButtonBase, Grid, TextField, Typography, Divider } from '@material-ui/core';
-import ImportExportIcon from '@material-ui/icons/ImportExport';
-import SaveIcon from '@material-ui/icons/Save';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles({
-  header: {
-    paddingBottom: '2em'
-  },
-  importBox: {
-    paddingBottom: '2em'
-  },
-  fileUploadButton: {
-    marginRight: '1em'
-  },
-  csvTextBox: {
-    width: '100%'
-  }
-});
+import { Button, Input, ButtonBase, Grid, TextField, Typography, Divider } from '@mui/material';
+import ImportExportIcon from '@mui/icons-material/ImportExport';
+import SaveIcon from '@mui/icons-material/Save';
 
 const Import = ({ dispatch }) => {
-  const classes = useStyles();
   const [rawData, setData] = useState('');
   const [fileName, setFileName] = useState('');
 
@@ -39,10 +22,10 @@ const Import = ({ dispatch }) => {
 
   return (
     <Grid container direction="column" alignContent="center" justify="center">
-      <Grid item className={classes.header}>
+      <Grid item sx={{ padding: '1em' }}>
         <Typography variant="h2">Import FP CSV Data</Typography>
-      </Grid> 
-      <Grid container direction="row" alignContent="center" justify="space-evenly" className={classes.importBox}>
+      </Grid>
+      <Grid container direction="row" alignContent="center" justify="space-evenly" sx={{ padding: '1em' }}>
         <Grid container item xs={4} alignContent="center" justify="center">
           <TextField
             id="outlined-multiline-static"
@@ -51,7 +34,9 @@ const Import = ({ dispatch }) => {
             rows={4}
             variant="outlined"
             onChange={handleTAChange}
-            className={classes.csvTextBox}
+            sx={{
+              width: '100%'
+            }}
           />
         </Grid>
         <Divider orientation="vertical" flexItem />
@@ -59,9 +44,11 @@ const Import = ({ dispatch }) => {
           <ButtonBase
             component="label"
           >
-            <Button variant="contained" startIcon={<SaveIcon />} component="span" className={classes.fileUploadButton}>
+            <Button variant="contained" startIcon={<SaveIcon />} component="span" sx={{
+              marginRight: '1em'
+            }}>
               Upload
-          </Button>
+            </Button>
             <Typography>{fileName}</Typography>
             <Input
               style={{ display: 'none' }}

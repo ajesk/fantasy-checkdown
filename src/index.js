@@ -19,11 +19,11 @@ const store = createStore(persistedReducer);
 const persister = persistStore(store)
 
 ReactDOM.render(
-	<Provider store={store}>
+  <Provider store={store}>
     <PersistGate loading={null} persistor={persister}>
-    	<App />
+        <App />
     </PersistGate>
-	</Provider>,
-	document.getElementById('root'));
-	  
+  </Provider>,
+  document.getElementById('root'));
+
 registerServiceWorker();

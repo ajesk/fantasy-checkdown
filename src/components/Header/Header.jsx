@@ -1,36 +1,33 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Typography, IconButton, Drawer, Box } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-
-const useStyles = makeStyles((theme) => ({
-  title: {
-    flexGrow: 1,
-  },
-  drawer: {
-    width: theme.spacing(50),
-    margin: theme.spacing(2)
-  }
-}));
+import { AppBar, Toolbar, Typography, IconButton, Drawer, Box, useTheme } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const Header = () => {
-  const classes = useStyles();
   const [showDrawer, setDrawer] = useState(false);
 
   return (
     <>
       <AppBar position="sticky">
-        <Toolbar>
-          <Typography variant="h3" component="h1" className={classes.title}>
-            Fantasy Checkdown Chart
-          </Typography>
-          <IconButton color="inherit" aria-label="show menu" onClick={() => setDrawer(true)}>
-            <MenuIcon fontSize="large" />
-          </IconButton>
+        <Toolbar sx={{ justifyContent: 'center', alignContent: 'center' }}>
+          <Box flexGrow={1}>
+            <Typography variant="h3" component="h1" sx={{
+              flexGrow: 1,
+            }}>
+              Fantasy Checkdown Chart
+            </Typography>
+          </Box>
+          <Box>
+            <IconButton color="inherit" aria-label="show menu" onClick={() => setDrawer(true)}>
+              <MenuIcon fontSize="large" />
+            </IconButton>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer anchor="right" open={showDrawer} onClose={() => setDrawer(false)}>
-        <Box className={classes.drawer}>
+        <Box sx={{
+          width: useTheme().spacing(50),
+          margin: useTheme().spacing(2)
+        }}>
           <Typography variant="h3">Tier based drafting?..</Typography>
           <Typography paragraph variant="inherit">
             Tier based drafting is a practice used in fantasy sport leagues to draft the best balanced team possible.
@@ -47,7 +44,7 @@ const Header = () => {
             <li>Tier drafting falls apart after a number of rounds (7-8)</li>
             <li>Know when to break the rules, practice ahead of time to understand the flow of drafting</li>
           </ol>
-          <Typography variant="h3">How to use</Typography> 
+          <Typography variant="h3">How to use</Typography>
           <ol>
             <li>Get FP draft rankings CSV from <a href="https://www.fantasypros.com/nfl/rankings/half-point-ppr-cheatsheets.php">here</a></li>
             <li>Copy the text to the text box or upload the CSV directly</li>

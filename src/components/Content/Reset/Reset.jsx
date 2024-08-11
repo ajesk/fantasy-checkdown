@@ -2,41 +2,21 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { reset } from '../../../actions';
-import Button from '@material-ui/core/Button';
-import UndoIcon from '@material-ui/icons/Undo';
-import { Modal, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import Fade from '@material-ui/core/fade';
-import Backdrop from '@material-ui/core/Backdrop';
-import Paper from '@material-ui/core/Paper';
+import { Backdrop, Button, Fade, Modal, Paper, Typography, useTheme } from '@mui/material';
+import { Undo } from '@mui/icons-material';
 
 const mapStateToProps = (state) => state;
 
-const useStyles = makeStyles((theme) => ({
-  modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  paper: {
-    padding: theme.spacing(2)
-  },
-  button: {
-    marginRight: theme.spacing(0.5)
-  }
-}));
-
 const Reset = ({ dispatch, players = [] }) => {
   const [showConfirm, setConfirm] = useState(false);
-  const classes = useStyles();
 
   return players.length !== 0 &&
     (
       <>
         <Button
           variant="contained"
-          color="secondary"
-          startIcon={<UndoIcon />}
+          color="error"
+          startIcon={<Undo />}
           onClick={() => setConfirm(true)}
 
         >
@@ -46,7 +26,11 @@ const Reset = ({ dispatch, players = [] }) => {
           open={showConfirm}
           onClose={() => setConfirm(false)}
           aria-labelledby=""
-          className={classes.modal}
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
           closeAfterTransition
           BackdropComponent={Backdrop}
           BackdropProps={{
@@ -54,19 +38,23 @@ const Reset = ({ dispatch, players = [] }) => {
           }}
         >
           <Fade in={showConfirm}>
-            <Paper className={classes.paper}>
+            <Paper sx={{
+              padding: useTheme().spacing(2)
+            }}>
               <Typography>Confirm reset?</Typography>
               <Button
                 variant="contained"
-                color="secondary"
-                className={classes.button}
+                color="error"
+                sx={{
+                  marginRight: useTheme().spacing(0.5)
+                }}
                 onClick={() => dispatch(reset())}
               >
                 Confirm
               </Button>
               <Button
                 variant="contained"
-                color="default"
+                color="info"
                 onClick={() => setConfirm(false)}
               >
                 Cancel

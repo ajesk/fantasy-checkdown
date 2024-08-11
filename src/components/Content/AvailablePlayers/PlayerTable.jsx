@@ -1,23 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Table from '@material-ui/core/Table';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
-import Paper from '@material-ui/core/Paper';
+import Table from '@mui/material/Table';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import Paper from '@mui/material/Paper';
 import { connect } from 'react-redux';
 import PlayerTiers from './PlayerTiers';
-import makeStyles from '@material-ui/core/styles/makeStyles';
 
-const useStyles = makeStyles((theme) => ({
-  tablePaper: {
-    // marginTop: theme.spacing(2)
-  },
-  headerCell: {
-    'font-weight': 'bold',
-    fontSize: '1.5rem',
-  },
-}));
+const headerCell = {
+  'fontWeight': 'bold',
+  fontSize: '1.5rem',
+};
 
 const mapStateToProps = (state) => {
   return ({
@@ -26,19 +20,18 @@ const mapStateToProps = (state) => {
 };
 
 const PlayerTable = ({ availablePlayers }) => {
-  const classes = useStyles();
 
   return (
     availablePlayers.length !== 0 ?
-      <Paper elevation={3} outlined="true" className={classes.tablePaper}>
+      <Paper elevation={3} outlined="true">
         <Table size="small">
           <TableHead>
             <TableRow>
-              <TableCell className={classes.headerCell} align="center"></TableCell>
-              <TableCell className={classes.headerCell} align="center">Rank</TableCell>
-              <TableCell className={classes.headerCell}>Name</TableCell>
-              <TableCell className={classes.headerCell} align="center">Position</TableCell>
-              <TableCell className={classes.headerCell} align="center">Value</TableCell>
+              <TableCell sx={headerCell} align="center"></TableCell>
+              <TableCell sx={headerCell} align="center">Rank</TableCell>
+              <TableCell sx={headerCell}>Name</TableCell>
+              <TableCell sx={headerCell} align="center">Position</TableCell>
+              <TableCell sx={headerCell} align="center">Value</TableCell>
             </TableRow>
           </TableHead>
           <PlayerTiers players={availablePlayers} />

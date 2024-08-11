@@ -1,29 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Modal } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import { connect } from 'react-redux';
-import { showTeam } from '../../../actions'
-import Fade from '@material-ui/core/fade';
-import Backdrop from '@material-ui/core/Backdrop';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import { Fade, Modal } from '@mui/material';
+import Backdrop from '@mui/material/Backdrop';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 import { DataGrid } from '@mui/x-data-grid';
-import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { connect } from 'react-redux';
+import { showTeam } from '../../../actions';
 
-const useStyles = makeStyles((theme) => ({
-  modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  paper: {
-    padding: theme.spacing(2),
-  },
-  button: {
-    marginRight: theme.spacing(0.5)
-  }
-}));
 const columns = [
   { field: 'picked', headerName: 'Picked', width: 90 },
   { field: 'tiers', headerName: 'Tier', width: 90 },
@@ -31,20 +16,22 @@ const columns = [
   { field: 'playerName', headerName: 'Name', width: 150 }];
 
 const MyTeamModal = ({ dispatch, players, show }) => {
-  const classes = useStyles();
   const myTeam = players.filter(player => player.drafted)
     .map((player, i) => {
       player.id = i;
       return player;
     });
-  console.log(myTeam)
 
   return (
     <Modal
       open={show}
       onClose={() => dispatch(showTeam(false))}
       aria-labelledby=""
-      className={classes.modal}
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
       closeAfterTransition
       BackdropComponent={Backdrop}
       BackdropProps={{
@@ -52,7 +39,9 @@ const MyTeamModal = ({ dispatch, players, show }) => {
       }}
     >
       <Fade in={show}>
-        <Paper className={classes.paper}>
+        <Paper sx={{
+          padding: '2em',
+        }}>
           <Typography>My Team</Typography>
           <DataGrid
             rows={myTeam}
@@ -61,7 +50,7 @@ const MyTeamModal = ({ dispatch, players, show }) => {
           />
           <Button
             variant="contained"
-            color="default"
+            color="inherit"
             onClick={() => dispatch(showTeam(false))}
           >
             Close

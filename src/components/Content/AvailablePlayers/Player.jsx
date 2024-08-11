@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import CheckCircleTwoToneIcon from '@material-ui/icons/CheckCircleTwoTone';
-import CancelIcon from '@material-ui/icons/CancelTwoTone';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
-import IconButton from '@material-ui/core/IconButton';
-import green from '@material-ui/core/colors/green';
+import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
+import CancelIcon from '@mui/icons-material/CancelTwoTone';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import IconButton from '@mui/material/IconButton';
+import green from '@mui/material/colors/green';
 import { draftPlayer, pickPlayer } from '../../../actions';
-import makeStyles from '@material-ui/core/styles/makeStyles';
 
-const useStyles = makeStyles({
+const styles = {
   player: {
     opacity: 1,
     '-webkit-transition': 'opacity 1000ms linear',
@@ -57,28 +56,27 @@ const useStyles = makeStyles({
       backgroundColor: '#676767'
     }
   }
-});
+};
 
-function getPosClass(pos) {
+const getPosClass = (pos) => {
   return pos.replace(/[0-9]/g, '').toLowerCase();
 }
 
 const Player = ({ player, dispatch }) => {
-  const classes = useStyles();
 
-  return <TableRow key={player.rk} className={`${classes.player} ${classes[getPosClass(player.pos)]}`}>
+  return <TableRow key={player.rk} sx={{...styles.player, ...styles[getPosClass(player.pos)]}}>
     <TableCell padding="none" align="center">
       <IconButton aria-label={`select ${player.playerName}`} onClick={() => dispatch(draftPlayer(player.rk))}>
         <CheckCircleTwoToneIcon fontSize="large" style={{ color: green[1000] }} />
       </IconButton>
       <IconButton aria-label={`select ${player.playerName}`} onClick={() => dispatch(pickPlayer(player.rk))}>
-        <CancelIcon fontSize="large" color="secondary" />
+        <CancelIcon fontSize="large" color="error" />
       </IconButton>
     </TableCell>
-    <TableCell className={classes.playerData} align="center">{player.rk}</TableCell>
-    <TableCell className={classes.playerData}>{player.playerName}</TableCell>
-    <TableCell className={classes.playerData} align="center">{player.pos}</TableCell>
-    <TableCell className={classes.playerData} align="center">{player.ecrVsAdp}</TableCell>
+    <TableCell sx={styles.playerData} align="center">{player.rk}</TableCell>
+    <TableCell sx={styles.playerData}>{player.playerName}</TableCell>
+    <TableCell sx={styles.playerData} align="center">{player.pos}</TableCell>
+    <TableCell sx={styles.playerData} align="center">{player.ecrVsAdp}</TableCell>
   </TableRow>
 };
 
