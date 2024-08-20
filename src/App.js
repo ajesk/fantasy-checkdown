@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import PlayerContent from './components/Content/PlayerContent';
+import { useTheme } from '@mui/material';
 
 const App = () => (
   <Box sx={{
@@ -15,7 +16,7 @@ const App = () => (
       direction="column"
       justify="center"
       alignContent="center"
-      sx={{ padding: '5em' }}
+      sx={{ padding: useTheme().spacing(1) }}
     >
       <PlayerContent />
       <Import />

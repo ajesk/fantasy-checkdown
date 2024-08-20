@@ -9,38 +9,36 @@ import { connect } from 'react-redux';
 import PlayerTiers from './PlayerTiers';
 
 const headerCell = {
-  'fontWeight': 'bold',
+  fontWeight: 'bold',
   fontSize: '1.5rem',
 };
 
 const mapStateToProps = (state) => {
   return ({
-    availablePlayers: state.players.filter(p => !p.picked),
-  })
+    availablePlayers: state.players.filter(p => !p.picked &&
+      (!state.search || p.playerName.toLocaleUpperCase().includes(state.search.trim().toLocaleUpperCase()))),
+  });
 };
 
-const PlayerTable = ({ availablePlayers }) => {
-
-  return (
-    availablePlayers.length !== 0 ?
-      <Paper elevation={3} outlined="true">
-        <Table size="small">
-          <TableHead>
-            <TableRow>
-              <TableCell sx={headerCell} align="center"></TableCell>
-              <TableCell sx={headerCell} align="center">Rank</TableCell>
-              <TableCell sx={headerCell}>Name</TableCell>
-              <TableCell sx={headerCell} align="center">Position</TableCell>
-              <TableCell sx={headerCell} align="center">Value</TableCell>
-            </TableRow>
-          </TableHead>
-          <PlayerTiers players={availablePlayers} />
-        </Table>
-      </Paper>
-      :
-      ''
-  )
-};
+const PlayerTable = ({ availablePlayers }) => (
+  availablePlayers.length !== 0 ?
+    <Paper elevation={3} outlined="true">
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            <TableCell sx={headerCell} align="center"></TableCell>
+            <TableCell sx={headerCell} align="center">Rank</TableCell>
+            <TableCell sx={headerCell}>Name</TableCell>
+            <TableCell sx={headerCell} align="center">Position</TableCell>
+            <TableCell sx={headerCell} align="center">Value</TableCell>
+          </TableRow>
+        </TableHead>
+        <PlayerTiers players={availablePlayers} />
+      </Table>
+    </Paper>
+    :
+    ''
+);
 
 PlayerTable.propTypes = {
   availablePlayers: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

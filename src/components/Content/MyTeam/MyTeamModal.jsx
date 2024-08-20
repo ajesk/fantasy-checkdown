@@ -18,6 +18,7 @@ const columns = [
 const MyTeamModal = ({ dispatch, players, show }) => {
   const myTeam = players.filter(player => player.drafted)
     .map((player, i) => {
+      player.pos = player.pos.replace(/[0-9]/g, '')
       player.id = i;
       return player;
     });
@@ -33,10 +34,6 @@ const MyTeamModal = ({ dispatch, players, show }) => {
         justifyContent: 'center',
       }}
       closeAfterTransition
-      BackdropComponent={Backdrop}
-      BackdropProps={{
-        timeout: 500,
-      }}
     >
       <Fade in={show}>
         <Paper sx={{
@@ -44,6 +41,7 @@ const MyTeamModal = ({ dispatch, players, show }) => {
         }}>
           <Typography>My Team</Typography>
           <DataGrid
+            
             rows={myTeam}
             columns={columns}
             pageSize={20}

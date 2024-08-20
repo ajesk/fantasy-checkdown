@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { VisibilityFilters, toggleContent, showTeam } from '../../actions';
+import { VisibilityFilters, toggleContent, showTeam, updateSearch } from '../../actions';
 import Undo from './Undo/Undo';
 import Reset from './Reset/Reset';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Grid from '@mui/material/Grid';
-import { Button, Paper, useTheme } from '@mui/material';
+import { Button, InputAdornment, TextField, useTheme } from '@mui/material';
+import { Search } from '@mui/icons-material';
 
 const mapStateToProps = (state) => state;
 
-const PlayerContentToolbar = ({ dispatch, visibilityFilters }) => (
-  <Paper sx={{ margin: useTheme().spacing(1) }}>
+const PlayerContentToolbar = ({ dispatch, visibilityFilters }) => {
+  const [searchValue, setSearch] = useState('');
+
+  useEffect(() => {
+    const delayInputTimeoutId = setTimeout(() => {
+      dispatch(updateSearch(searchValue));
+    }, 500);
+    return () => clearTimeout(delayInputTimeoutId);
+  }, [searchValue, 500]);
+
+  return (
     <Grid container direction="row" justify="flex-end" sx={{ padding: useTheme().spacing(1) }}>
       <Grid container item direction="row" justify="space-between" sx={{ padding: useTheme().spacing(1) }}>
         <Grid item flexGrow={1}>
@@ -49,8 +59,22 @@ const PlayerContentToolbar = ({ dispatch, visibilityFilters }) => (
           </Button>
         </Grid>
       </Grid>
+      <Grid>
+        <TextField
+          variant="filled"
+          label="Search for player"
+          value={searchValue}
+          onChange={(e) => setSearch(e.target.value)}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Search />
+              </InputAdornment>
+            ),
+          }} />
+      </Grid>
     </Grid>
-  </Paper>
-);
+  );
+};
 
 export default connect(mapStateToProps)(PlayerContentToolbar);

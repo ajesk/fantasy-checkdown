@@ -6,21 +6,27 @@ import { Button, Input, ButtonBase, Grid, TextField, Typography, Divider } from 
 import ImportExportIcon from '@mui/icons-material/ImportExport';
 import SaveIcon from '@mui/icons-material/Save';
 
-const Import = ({ dispatch }) => {
+const mapStateToProps = (state) => {
+  return ({
+    show: state.players.length === 0
+  });
+};
+
+const Import = ({ dispatch, show }) => {
   const [rawData, setData] = useState('');
   const [fileName, setFileName] = useState('');
 
   const handleTAChange = (e) => setData(e.target.value);
-
   const handleSubmit = () => dispatch(importPlayers(parseFpCsv(rawData)));
-
   const handleTest = (e) => {
     const [file] = e.target.files;
     setFileName(file.name);
     file.text().then(t => setData(t));
   };
 
-  return (
+  
+
+  return show ? (
     <Grid container direction="column" alignContent="center" justify="center">
       <Grid item sx={{ padding: '1em' }}>
         <Typography variant="h2">Import FP CSV Data</Typography>
@@ -69,7 +75,7 @@ const Import = ({ dispatch }) => {
         Import
       </Button>
     </Grid>
-  );
+  ) : '';
 };
 
-export default connect()(Import);
+export default connect(mapStateToProps)(Import);
