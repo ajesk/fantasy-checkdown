@@ -39,4 +39,7 @@ jobs:
       run: yarn build
 
     - name: deploy
-      run: yarn deploy
+      run: |
+       git config --global user.email "aaronjeskie@gmail.com"
+       git config --global user.name "acode"
+       yarn deploy
