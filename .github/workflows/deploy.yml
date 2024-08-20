@@ -40,6 +40,7 @@ jobs:
 
     - name: deploy
       run: |
+       git remote set-url origin https://ajesk:${{secrets.GITHUB_TOKEN}}@github.com/ajesk/fantasy-checkdown
        git config --global user.email "aaronjeskie@gmail.com"
        git config --global user.name "acode"
        yarn deploy
