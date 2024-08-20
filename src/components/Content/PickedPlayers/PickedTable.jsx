@@ -9,14 +9,10 @@ import Paper from '@mui/material/Paper'
 import { connect } from 'react-redux';
 
 const styles = {
-  withayerData: {
-    fontSize: '1.5rem',
-    padding: '1px 24px 1px 16px'
-  },
   tableHead: {
     fontSize: '1.5rem',
     fontWeight: 'bold',
-    padding: '1px 24px 1px 16px'
+    padding: '.25em'
   },
   draftedTierBreak: {
     border: '3px solid red'
