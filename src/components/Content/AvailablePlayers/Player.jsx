@@ -8,6 +8,7 @@ import TableCell from '@mui/material/TableCell';
 import IconButton from '@mui/material/IconButton';
 import green from '@mui/material/colors/green';
 import { draftPlayer, pickPlayer } from '../../../actions';
+import PlayerRanks from './PlayerRanks';
 
 const styles = {
   player: {
@@ -62,23 +63,22 @@ const getPosClass = (pos) => {
   return pos.replace(/[0-9]/g, '').toLowerCase();
 }
 
-const Player = ({ player, dispatch }) => {
-
-  return <TableRow key={player.rk} sx={{...styles.player, ...styles[getPosClass(player.pos)]}}>
-    <TableCell padding="none" align="center">
-      <IconButton aria-label={`select ${player.playerName}`} onClick={() => dispatch(draftPlayer(player.rk))}>
-        <CheckCircleTwoToneIcon fontSize="large" style={{ color: green[1000] }} />
-      </IconButton>
-      <IconButton aria-label={`select ${player.playerName}`} onClick={() => dispatch(pickPlayer(player.rk))}>
-        <CancelIcon fontSize="large" color="error" />
-      </IconButton>
-    </TableCell>
-    <TableCell sx={styles.playerData} align="center">{player.rk}</TableCell>
-    <TableCell sx={styles.playerData}>{player.playerName}</TableCell>
-    <TableCell sx={styles.playerData} align="center">{player.pos}</TableCell>
-    <TableCell sx={styles.playerData} align="center">{player.ecrVsAdp}</TableCell>
-  </TableRow>
-};
+const Player = ({ player, dispatch }) => <TableRow key={player.rk} sx={{ ...styles.player, ...styles[getPosClass(player.pos)] }}>
+  <TableCell padding="none" align="center">
+    <IconButton aria-label={`select ${player.playerName}`} onClick={() => dispatch(draftPlayer(player.rk))}>
+      <CheckCircleTwoToneIcon fontSize="large" style={{ color: green[1000] }} />
+    </IconButton>
+    <IconButton aria-label={`select ${player.playerName}`} onClick={() => dispatch(pickPlayer(player.rk))}>
+      <CancelIcon fontSize="large" color="error" />
+    </IconButton>
+  </TableCell>
+  <TableCell sx={styles.playerData} align="center">
+    <PlayerRanks player={player} />
+  </TableCell>
+  <TableCell sx={styles.playerData}>{player.playerName}</TableCell>
+  <TableCell sx={styles.playerData} align="center">{player.pos}</TableCell>
+  <TableCell sx={styles.playerData} align="center">{player.ecrVsAdp}</TableCell>
+</TableRow>;
 
 Player.propTypes = {
   player: PropTypes.object.isRequired,
