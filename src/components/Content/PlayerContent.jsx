@@ -14,7 +14,7 @@ const mapStateToProps = (state) => state;
 
 const PlayerContent = ({ visibilityFilters, players = [] }) => players.length ?
   (
-    <Box>
+    <Box sx={{width: '100%'}}>
       <Paper>
         <Grid container direction="row" justify="space-between">
           {visibilityFilters[VisibilityFilters.SHOW_AVAILABLE] &&

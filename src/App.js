@@ -16,7 +16,7 @@ const App = () => (
       direction="column"
       justify="center"
       alignContent="center"
-      sx={{ padding: useTheme().spacing(1) }}
+      sx={{ padding: useTheme().spacing(2) }}
     >
       <PlayerContent />
       <Import />
